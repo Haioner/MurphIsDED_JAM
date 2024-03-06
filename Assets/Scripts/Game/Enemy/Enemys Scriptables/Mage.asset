@@ -19,7 +19,13 @@ MonoBehaviour:
   Health: 1
   AnimatorController: {fileID: 0}
   AttacksList:
-  - AttackCooldown: 1
+  - AttackCooldown: 2
+    Damage: 1
+    TargetLayer:
+      serializedVersion: 2
+      m_Bits: 64
+    bullet: {fileID: 6682563522267161197, guid: e0d2ee06a13000a4b857ced4a4b80c40, type: 3}
+  - AttackCooldown: 2
     Damage: 1
     TargetLayer:
       serializedVersion: 2

@@ -19,6 +19,7 @@ public class HealthController : MonoBehaviour
 
     [Header("Damage")]
     [SerializeField] private DamageController damageController;
+    public UnityEvent DamageEvent;
 
     [Header("CanvasGroup")]
     [SerializeField] private bool canUpdateCG = true;
@@ -58,6 +59,7 @@ public class HealthController : MonoBehaviour
             currentHealth -= damage;
             SpawnDamageCanvas(damage);
             StartCoroutine(nameof(DamageVisibility));
+            DamageEvent?.Invoke();
         }
         else 
             currentHealth = 0;

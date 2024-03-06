@@ -294,6 +294,7 @@ GameObject:
   - component: {fileID: 378803993}
   - component: {fileID: 378803995}
   - component: {fileID: 378803994}
+  - component: {fileID: 378803996}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -371,6 +372,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &378803996
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 378803992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+  m_PivotOffset: {x: 0, y: 0, z: 0}
+  m_AmplitudeGain: 0
+  m_FrequencyGain: 5
+  mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &499547940
 GameObject:
   m_ObjectHideFlags: 0
@@ -887,6 +905,7 @@ GameObject:
   m_Component:
   - component: {fileID: 922708261}
   - component: {fileID: 922708260}
+  - component: {fileID: 922708262}
   m_Layer: 0
   m_Name: Virtual Camera
   m_TagString: Untagged
@@ -949,6 +968,18 @@ Transform:
   - {fileID: 378803993}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &922708262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 922708259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da97f074073e3b548af3fc04e92e7464, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &997192621
 GameObject:
   m_ObjectHideFlags: 0
@@ -1869,6 +1900,38 @@ PrefabInstance:
       propertyPath: canUpdateCG
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1567500487105322532, guid: 11825120d6f909445836d5bdde0c93d5, type: 3}
+      propertyPath: DamageEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1567500487105322532, guid: 11825120d6f909445836d5bdde0c93d5, type: 3}
+      propertyPath: DamageEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1567500487105322532, guid: 11825120d6f909445836d5bdde0c93d5, type: 3}
+      propertyPath: DamageEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 922708262}
+    - target: {fileID: 1567500487105322532, guid: 11825120d6f909445836d5bdde0c93d5, type: 3}
+      propertyPath: DamageEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1567500487105322532, guid: 11825120d6f909445836d5bdde0c93d5, type: 3}
+      propertyPath: DamageEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShakeCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 1567500487105322532, guid: 11825120d6f909445836d5bdde0c93d5, type: 3}
+      propertyPath: DamageEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: CinemachineShake, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1567500487105322532, guid: 11825120d6f909445836d5bdde0c93d5, type: 3}
+      propertyPath: DamageEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_FloatArgument
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1567500487105322532, guid: 11825120d6f909445836d5bdde0c93d5, type: 3}
+      propertyPath: DamageEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2551188228066212707, guid: 11825120d6f909445836d5bdde0c93d5, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1995,10 +2058,10 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
-  - {fileID: 499547942}
-  - {fileID: 1241892456}
-  - {fileID: 997192624}
   - {fileID: 922708261}
+  - {fileID: 499547942}
+  - {fileID: 997192624}
+  - {fileID: 1241892456}
   - {fileID: 1090908077}
   - {fileID: 1324867511}
   - {fileID: 565862046}

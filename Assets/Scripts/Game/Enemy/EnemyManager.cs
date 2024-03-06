@@ -6,7 +6,7 @@ using UnityEngine.Events;
 [System.Serializable]
 public enum EnemyState
 {
-    Idle, Attack, Die, Chase, GetAway
+    Spawn, Idle, Attack, Die, Chase, GetAway
 }
 
 public class EnemyManager : MonoBehaviour
@@ -28,7 +28,7 @@ public class EnemyManager : MonoBehaviour
 
     private void Update()
     {
-        if (enemyState != EnemyState.Die && enemyState != EnemyState.Idle)
+        if (enemyState != EnemyState.Die && enemyState != EnemyState.Spawn)
             Flip();
     }
 

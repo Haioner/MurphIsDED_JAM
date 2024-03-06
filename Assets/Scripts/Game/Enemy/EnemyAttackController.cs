@@ -110,7 +110,7 @@ public class EnemyAttackController : MonoBehaviour
             AttackRanged();
         }
 
-        if (GetAttackType() == AttackType.Meele && IsTargetNear())
+        if (GetAttackType() == AttackType.Meele)
         {
             AttackMeele();
         }
@@ -123,7 +123,9 @@ public class EnemyAttackController : MonoBehaviour
     {
         if (enemyManager.enemyState == EnemyState.Die) return;
 
-        GetTargetHealthController().Damage(enemyManager.enemySO.AttacksList[currentAttack].Damage);
+        if (IsTargetNear())
+            GetTargetHealthController().Damage(enemyManager.enemySO.AttacksList[currentAttack].Damage);
+
         enemyManager.enemyState = EnemyState.Chase;
     }
 
@@ -150,7 +152,12 @@ public class EnemyAttackController : MonoBehaviour
     private void SetGetAway()
     {
         if (enemyManager.enemySO.isBrave) return;
-        canGetAway = true;
+        canGetAway = GetRandomGetAway();
+    }
+
+    private bool GetRandomGetAway()
+    {
+        return Random.Range(0f, 1f) > 0.5f;
     }
 
     private void CalculateGetAway()
