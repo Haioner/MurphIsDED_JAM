@@ -13,6 +13,11 @@ public class EnemyMovement : MonoBehaviour
         currentSpeed = GetRandomSpeed();
     }
 
+    private void Update()
+    {
+        HitStopMovement();
+    }
+
     private void FixedUpdate()
     {
         if (enemyManager.enemyState == EnemyState.Chase)
@@ -43,6 +48,15 @@ public class EnemyMovement : MonoBehaviour
     private void MoveBackwards()
     {
         Vector2 direction = ((Vector2)transform.position - (Vector2)playerTransform.position).normalized;
-        transform.Translate(direction * (currentSpeed * 1.5f) * Time.fixedDeltaTime);
+        transform.Translate(direction * (currentSpeed * 1.75f) * Time.fixedDeltaTime);
+    }
+
+    private void HitStopMovement()
+    {
+        if (enemyManager.enemyState == EnemyState.Hit)
+        {
+            Vector2 direction = ((Vector2)transform.position - (Vector2)playerTransform.position).normalized;
+            transform.Translate(direction * (currentSpeed * 3.5f) * Time.fixedDeltaTime);
+        }
     }
 }

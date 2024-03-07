@@ -19,6 +19,7 @@ public class HealthController : MonoBehaviour
 
     [Header("Damage")]
     [SerializeField] private DamageController damageController;
+    [SerializeField] private GameObject particleDamage;
     public UnityEvent DamageEvent;
 
     [Header("CanvasGroup")]
@@ -58,6 +59,7 @@ public class HealthController : MonoBehaviour
         {
             currentHealth -= damage;
             SpawnDamageCanvas(damage);
+            SpawnHitParticles();
             StartCoroutine(nameof(DamageVisibility));
             DamageEvent?.Invoke();
         }
@@ -97,18 +99,22 @@ public class HealthController : MonoBehaviour
         }
     }
 
-    public void DestroyGameObject()
-    {
-        Destroy(gameObject);
-    }
-
     private void SpawnDamageCanvas(float damageValue)
     {
-        Vector3 spawnPosition = Random.insideUnitCircle + (Vector2)transform.position;
+        Transform parentTransform = transform.parent;
+        Vector3 spawnPosition = (Random.insideUnitCircle * 0.7f) + (Vector2)parentTransform.position;
         spawnPosition.z = 0f;
-        spawnPosition.y -= 1f;
+        spawnPosition.y += 1f;
         DamageController damage = Instantiate(damageController, spawnPosition, Quaternion.identity);
         damage.SetDamage(damageValue);
+    }
+
+    public void SpawnHitParticles()
+    {
+        Transform parent = transform.parent;
+        Vector3 spawnPos = parent.position;
+        spawnPos.y += 1f;
+        Instantiate(particleDamage, spawnPos, Quaternion.identity);
     }
 
     private void UpdateHealthText()

@@ -27,8 +27,6 @@ public class BulletController : MonoBehaviour
 
     private void Update()
     {
-        if (target == null) return;
-
         MoveToTarget();
         MoveToTargetDirection();
     }
@@ -45,10 +43,9 @@ public class BulletController : MonoBehaviour
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
-
     private void MoveToTarget()
     {
-        if (canFollowTarget)
+        if (canFollowTarget && target != null)
         {
             Vector3 targetPosition = new Vector3(target.position.x, target.position.y + 0.7f, transform.position.z);
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, bulletSpeed * Time.deltaTime);

@@ -50,7 +50,11 @@ public class EnemyAttackController : MonoBehaviour
                 nearestTarget = collider.transform;
             }
         }
-        return nearestTarget;
+
+        if (nearestTarget == null)
+            return enemyManager.player.transform;
+        else
+            return nearestTarget;
     }
 
     private HealthController GetTargetHealthController()
@@ -60,7 +64,10 @@ public class EnemyAttackController : MonoBehaviour
 
     private float GetTargetDistance()
     {
-        return Vector2.Distance(transform.position, GetNearestTarget().position);
+        if (GetNearestTarget() != null)
+            return Vector2.Distance(transform.position, GetNearestTarget().position);
+        else
+            return Vector2.Distance(transform.position, enemyManager.player.transform.position);
     }
 
     private bool IsTargetNear()
@@ -123,7 +130,7 @@ public class EnemyAttackController : MonoBehaviour
     {
         if (enemyManager.enemyState == EnemyState.Die) return;
 
-        if (IsTargetNear())
+        if (GetTargetDistance() <= enemyManager.enemySO.StopRange + 0.5f)
             GetTargetHealthController().Damage(enemyManager.enemySO.AttacksList[currentAttack].Damage);
 
         enemyManager.enemyState = EnemyState.Chase;

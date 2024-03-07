@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class GameManager : MonoBehaviour
+public class GameController : MonoBehaviour
 {
     [Header("Player")]
     [SerializeField] private GameObject player;
@@ -14,7 +14,6 @@ public class GameManager : MonoBehaviour
 
     [Header("Spawn")]
     [SerializeField] private WaveSO waveSO;
-    [SerializeField] private float spawnRate = 1f;
     [SerializeField] private Vector2 minMaxSpawnRadiusX;
     [SerializeField] private Vector2 minMaxSpawnRadiusY;
     private float currentSpawnRate;
@@ -26,6 +25,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        currentSpawnRate = waveSO.enemiesList[currentEnemyInWave].enemySpawnCooldown;
         remainingEnemies = waveSO.enemiesList.Count;
         SetRemainingText();
     }
@@ -55,9 +55,10 @@ public class GameManager : MonoBehaviour
         currentSpawnRate -= Time.deltaTime;
         if(currentSpawnRate <= 0)
         {
-            currentSpawnRate = spawnRate;
             SpawnEnemy();
             currentEnemyInWave++;
+            if (currentEnemyInWave < waveSO.enemiesList.Count)
+                currentSpawnRate = waveSO.enemiesList[currentEnemyInWave].enemySpawnCooldown;
         }
     }
 
@@ -70,7 +71,7 @@ public class GameManager : MonoBehaviour
 
         UnityEvent dieEventToAdd = new UnityEvent();
         dieEventToAdd.AddListener(SubtractEnemyRemaining);
-        enemy.InitiateEnemy(waveSO.enemiesList[currentEnemyInWave], player, dieEventToAdd);
+        enemy.InitiateEnemy(waveSO.enemiesList[currentEnemyInWave].enemy, player, dieEventToAdd);
     }
 
     #endregion

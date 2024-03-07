@@ -31,5 +31,5 @@ MonoBehaviour:
       serializedVersion: 2
       m_Bits: 64
     bullet: {fileID: 6682563522267161197, guid: e0d2ee06a13000a4b857ced4a4b80c40, type: 3}
-  isBrave: 1
-  MinMaxGetAwayTimer: {x: 0.7, y: 1.4}
+  isBrave: 0
+  MinMaxGetAwayTimer: {x: 1, y: 2}
