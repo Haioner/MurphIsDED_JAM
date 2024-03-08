@@ -96,7 +96,7 @@ public class DataManager : MonoBehaviour
     {
         if (PlayerPrefs.HasKey("EncryptedItemData"))
         {
-            string encryptedData = PlayerPrefs.GetString("EncryptedItemDaata");
+            string encryptedData = PlayerPrefs.GetString("EncryptedItemData");
             string decryptedData = Decrypt(encryptedData, encryptionKey);
             itemData = JsonUtility.FromJson<ItemData>(decryptedData);
             Debug.Log("Loaded Item!");

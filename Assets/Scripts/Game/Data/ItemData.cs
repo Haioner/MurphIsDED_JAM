@@ -5,5 +5,6 @@ using UnityEngine;
 [System.Serializable]
 public class ItemData
 {
-    public string test;
+    public int test;
+    public float test2;
 }

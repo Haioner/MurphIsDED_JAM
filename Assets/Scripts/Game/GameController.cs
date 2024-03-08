@@ -95,7 +95,6 @@ public class GameController : MonoBehaviour
     {
         if (remainingEnemies <= 0)
         {
-            DataManager.instance.gameData.UnlockNextGameLevel();
             winHolder.SetActive(true);
         }
     }

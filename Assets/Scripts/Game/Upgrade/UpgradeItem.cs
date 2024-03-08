@@ -19,6 +19,7 @@ public class UpgradeItem : MonoBehaviour
 
     public void SelectUpgradeItem()
     {
+        DataManager.instance.gameData.UnlockNextGameLevel();
         DataManager.instance.gameData.NextGameLevel();
         gameController.ResetGameController();
     }
