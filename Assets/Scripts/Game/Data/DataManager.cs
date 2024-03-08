@@ -61,8 +61,11 @@ public class DataManager : MonoBehaviour
             {
                 gameData.EqquipedAttacks.Add(null);
             }
-            PlayerAttacks newPlayerAttack = gameData.Attacks[0].Clone();
-            gameData.EqquipedAttacks[0] = newPlayerAttack;
+            gameData.ConvertAndEquipAttack(gameData.Attacks[0], 0);
+            //gameData.EqquipedAttacks[0] = gameData.Attacks[0];
+     
+            //PlayerAttacks newPlayerAttack = gameData.Attacks[0].Clone();
+            //gameData.EqquipedAttacks[0] = newPlayerAttack;
         }
     }
 

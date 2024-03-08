@@ -105,7 +105,7 @@ public class HealthController : MonoBehaviour
         {
             currentHealth = 0;
             DieEvent?.Invoke();
-            DieEvent.RemoveAllListeners();
+            //DieEvent.RemoveAllListeners();
         }
     }
 

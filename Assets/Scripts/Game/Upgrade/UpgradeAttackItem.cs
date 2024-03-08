@@ -13,7 +13,7 @@ public class UpgradeAttackItem : MonoBehaviour
     [SerializeField] private Image iconImage;
 
     private UpgradeManager upgradeManager;
-    private PlayerAttacks playerAttack;
+    private AttackSO playerAttack;
     private int itemIndex;
 
     public void InitiateItem(UpgradeManager upgradeManager, int attackIndex, int itemIndex)

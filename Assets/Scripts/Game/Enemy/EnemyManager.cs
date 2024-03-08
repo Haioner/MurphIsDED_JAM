@@ -39,6 +39,9 @@ public class EnemyManager : MonoBehaviour
     {
         if (enemyState != EnemyState.Die && enemyState != EnemyState.Spawn)
             Flip();
+
+        if (healthController.GetCurrentHealth() <= 0)
+            enemyState = EnemyState.Die;
     }
 
     private void Flip()
@@ -102,7 +105,8 @@ public class EnemyManager : MonoBehaviour
 
     public void HitEnemyState()
     {
-        enemyState = EnemyState.Hit;
+        if (enemyState != EnemyState.Die)
+            enemyState = EnemyState.Hit;
         StartCoroutine(BackToIdleState());
     }
 

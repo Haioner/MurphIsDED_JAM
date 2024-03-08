@@ -61,29 +61,17 @@ public class PlayerAttack : MonoBehaviour
     private void NextAttack()
     {
         // Animation
-        if(gameData.EqquipedAttacks[currentAttackIndex].AttackName != null)
+        //if(gameData.EqquipedAttacks[currentAttackIndex].AttackName != null)
+        if(gameData.EqquipedAttacks[currentAttackIndex] != null)
         {
             string attackName = gameData.EqquipedAttacks[currentAttackIndex].AttackName;
             playerManager.anim.Play(attackName);
         }
 
-
-        //int originalIndex = currentAttackIndex;
-        //do
-        //{
-        //    currentAttackIndex++;
-        //    currentAttackIndex %= gameData.EqquipedAttacks.Count;
-
-        //    if (currentAttackIndex == originalIndex)
-        //    {
-        //        Debug.LogWarning("Todos os ataques estão vazios.");
-        //        return;
-        //    }
-        //} while (gameData.EqquipedAttacks[currentAttackIndex].AttackName == null);
-
         currentAttackIndex++;
         currentAttackIndex %= gameData.EqquipedAttacks.Count;
-        while (gameData.EqquipedAttacks[currentAttackIndex].AttackName == null)
+        //while (gameData.EqquipedAttacks[currentAttackIndex].AttackName == null)
+        while (gameData.EqquipedAttacks[currentAttackIndex] == null)
         {
             currentAttackIndex++;
             currentAttackIndex %= gameData.EqquipedAttacks.Count;

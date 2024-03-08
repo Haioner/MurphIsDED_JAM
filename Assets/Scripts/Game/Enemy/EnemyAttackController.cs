@@ -197,7 +197,7 @@ public class EnemyAttackController : MonoBehaviour
 
     private void SetGetAway()
     {
-        if (enemyManager.enemySO.isBrave) return;
+        if (enemyManager.enemySO.isBrave || enemyManager.enemyState != EnemyState.Die) return;
         canGetAway = GetRandomGetAway();
     }
 
@@ -213,7 +213,7 @@ public class EnemyAttackController : MonoBehaviour
             enemyManager.enemyState = EnemyState.GetAway;
             currentGetAwayTimer -= Time.deltaTime;
 
-            if(currentGetAwayTimer < 0)
+            if(currentGetAwayTimer < 0 && enemyManager.enemyState != EnemyState.Die)
             {
                 enemyManager.enemyState = EnemyState.Chase;
                 canGetAway = false;

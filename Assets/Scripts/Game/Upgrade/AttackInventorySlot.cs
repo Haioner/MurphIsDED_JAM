@@ -18,7 +18,7 @@ public class AttackInventorySlot : MonoBehaviour
     [Header("Select")]
     [SerializeField] private GameObject selectHolder;
 
-    private PlayerAttacks playerAttack;
+    //private AttackSO playerAttack;
 
     private void Start()
     {
@@ -33,13 +33,14 @@ public class AttackInventorySlot : MonoBehaviour
 
     private void InitiatePlayerAttack()
     {
-        playerAttack = DataManager.instance.gameData.EqquipedAttacks[slotIndex];
+        //playerAttack = DataManager.instance.gameData.EqquipedAttacks[slotIndex];
     }
 
     public void SelectSlot()
     {
-        if (playerAttack.AttackLevel >= playerAttack.MaxAttackLevel)
-            return;
+        PlayerAttacks eqquipedAttack = DataManager.instance.gameData.EqquipedAttacks[slotIndex];
+        if (eqquipedAttack.AttackLevel >= eqquipedAttack.MaxAttackLevel)
+                return;
 
         DataManager.instance.gameData.UnlockNextGameLevel();
         DataManager.instance.gameData.NextGameLevel();
@@ -52,11 +53,23 @@ public class AttackInventorySlot : MonoBehaviour
     private void UpgradeAttack()
     {
         //Select Slot
-        if (upgradeManager.SelectedAttack.AttackName != playerAttack.AttackName)
+        PlayerAttacks eqquipedAttack = DataManager.instance.gameData.EqquipedAttacks[slotIndex];
+        if (eqquipedAttack.AttackName == null || upgradeManager.SelectedAttack.AttackName != eqquipedAttack.AttackName)
         {
-            playerAttack = upgradeManager.SelectedAttack.Clone();
-            DataManager.instance.gameData.EqquipedAttacks[slotIndex] = playerAttack;
+            //playerAttack = upgradeManager.SelectedAttack;
+            //DataManager.instance.gameData.EqquipedAttacks[slotIndex] = playerAttack;
+            DataManager.instance.gameData.ConvertAndEquipAttack(upgradeManager.SelectedAttack, slotIndex);
+           // playerAttack = DataManager.instance.gameData.Attacks[slotIndex];
+
+            //DataManager.instance.gameData.UpgradeAttack(slotIndex);
         }
+        //else if (upgradeManager.SelectedAttack.AttackName != eqquipedAttack.AttackName)
+        //{
+        //    //playerAttack = upgradeManager.SelectedAttack;
+        //    //DataManager.instance.gameData.EqquipedAttacks[slotIndex] = playerAttack;
+        //    DataManager.instance.gameData.ConvertAndEquipAttack(upgradeManager.SelectedAttack,slotIndex);
+        //    //playerAttack = DataManager.instance.gameData.Attacks[slotIndex];
+        //}
         else
         {
             DataManager.instance.gameData.UpgradeAttack(slotIndex);
@@ -67,25 +80,26 @@ public class AttackInventorySlot : MonoBehaviour
 
     public void UpdateSlotInfo()
     {
-        EmptySlot();
-
-        if (playerAttack.AttackName == null) return;
-
-        nameText.SetText(playerAttack.AttackName);
-        iconImage.sprite = playerAttack.AttackIcon;
-        if (playerAttack.AttackLevel >= playerAttack.MaxAttackLevel)
-            levelText.SetText("MAX");
+        if (DataManager.instance.gameData.EqquipedAttacks[slotIndex].AttackName == null 
+            || string.IsNullOrEmpty(DataManager.instance.gameData.EqquipedAttacks[slotIndex].AttackName) )
+            EmptySlot();
         else
-            levelText.SetText("Lvl " + playerAttack.AttackLevel.ToString());
+        {
+            PlayerAttacks eqquipedAttack = DataManager.instance.gameData.EqquipedAttacks[slotIndex];
+            nameText.SetText(eqquipedAttack.AttackName);
+            //iconImage.sprite = eqquipedAttack.AttackIcon;
+            iconImage.sprite = DataManager.instance.gameData.Attacks[eqquipedAttack.AttackIndex].AttackIcon;
+            if (eqquipedAttack.AttackLevel >= eqquipedAttack.MaxAttackLevel)
+                levelText.SetText("MAX");
+            else
+                levelText.SetText("Lvl " + eqquipedAttack.AttackLevel.ToString());
+        }
     }
 
     private void EmptySlot()
     {
-        if (playerAttack.AttackName == null)
-        {
-            nameText.SetText("Empty Slot");
-            levelText.SetText("");
-            iconImage.sprite = emptyImage;
-        }
+        nameText.SetText("Empty Slot");
+        levelText.SetText("");
+        iconImage.sprite = emptyImage;
     }
 }

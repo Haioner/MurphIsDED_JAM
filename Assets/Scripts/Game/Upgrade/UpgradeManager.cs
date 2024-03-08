@@ -15,7 +15,7 @@ public class UpgradeManager : MonoBehaviour
 
     private List<UpgradeAttackItem> upgradeAttackItems = new List<UpgradeAttackItem>();
     private List<int> attackIndexList = new List<int>();
-    public PlayerAttacks SelectedAttack { set; get; }
+    public AttackSO SelectedAttack { set; get; }
     private int currentSelectedItem;
 
     private void OnEnable()
