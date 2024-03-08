@@ -3,17 +3,22 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
     [Header("Player")]
     [SerializeField] private GameObject player;
+    private HealthController playerHealth;
 
     [Header("CACHE")]
     [SerializeField] private EnemyManager enemyManager;
+    [SerializeField] private GameObject winHolder;
+    [SerializeField] private GameObject loseHolder;
 
     [Header("Spawn")]
     [SerializeField] private WaveSO waveSO;
+    [SerializeField] private WaveList waveList;
     [SerializeField] private Vector2 minMaxSpawnRadiusX;
     [SerializeField] private Vector2 minMaxSpawnRadiusY;
     private float currentSpawnRate;
@@ -25,9 +30,8 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
-        currentSpawnRate = waveSO.enemiesList[currentEnemyInWave].enemySpawnCooldown;
-        remainingEnemies = waveSO.enemiesList.Count;
-        SetRemainingText();
+        playerHealth = player.GetComponentInChildren<HealthController>();
+        ResetGameController();
     }
 
     private void Update()
@@ -44,7 +48,65 @@ public class GameController : MonoBehaviour
     {
         remainingEnemies--;
         SetRemainingText();
+        WinWave();
     }
+
+    public void ResetGameController()
+    {
+        if (CheckWaveScene()) return;
+        waveSO = waveList.waveList[DataManager.instance.gameData.CurrentGameLevel];
+        currentEnemyInWave = 0;
+        currentSpawnRate = waveSO.enemiesList[currentEnemyInWave].enemySpawnCooldown;
+        remainingEnemies = waveSO.enemiesList.Count;
+        SetRemainingText();
+        winHolder.SetActive(false);
+        playerHealth.ResetCurrentHealth();
+    }
+
+    private bool CheckWaveScene()
+    {
+        string waveSceneName = waveList.waveList[DataManager.instance.gameData.CurrentGameLevel].SceneName;
+
+        Scene scene = SceneManager.GetActiveScene();
+        string currentSceneName = scene.name;
+        if (waveSceneName != currentSceneName)
+        {
+            TransitionController.instance.TransitionToSceneName(waveSceneName);
+            return true;
+        }
+        return false;
+    }
+
+    #region Win or Lose
+
+    public void BackToMenu()
+    {
+        TransitionController.instance.TransitionToSceneName("LevelSelector");
+    }
+
+    public void ReloadScene()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        string currentSceneName = scene.name;
+        TransitionController.instance.TransitionToSceneName(currentSceneName);
+    }
+
+    private void WinWave()
+    {
+        if (remainingEnemies <= 0)
+        {
+            DataManager.instance.gameData.UnlockNextGameLevel();
+            winHolder.SetActive(true);
+        }
+    }
+
+    public void LoseWave()
+    {
+        if (winHolder.activeInHierarchy) return;
+        loseHolder.SetActive(true);
+    }
+
+    #endregion
 
     #region Spawner
 

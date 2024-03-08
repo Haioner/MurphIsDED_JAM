@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
@@ -5,21 +6,25 @@ public class EnemyMovement : MonoBehaviour
     private EnemyManager enemyManager;
     private Transform playerTransform;
     private float currentSpeed;
+    private Vector2 dashDirection = Vector2.zero;
+    private HealthController playerHealthController;
 
     private void Start()
     {
         enemyManager = GetComponent<EnemyManager>();
         playerTransform = enemyManager.player.transform;
         currentSpeed = GetRandomSpeed();
-    }
-
-    private void Update()
-    {
-        HitStopMovement();
+        playerHealthController = enemyManager.player.GetComponentInChildren<HealthController>();
     }
 
     private void FixedUpdate()
     {
+        if (playerHealthController.GetCurrentHealth() <= 0) return;
+
+
+        HitKnockback();
+        UpdateDash();
+
         if (enemyManager.enemyState == EnemyState.Chase)
             MoveToPlayer();
         else if (enemyManager.enemyState == EnemyState.GetAway)
@@ -38,7 +43,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void MoveToPlayer()
     {
-        if (GetPlayerDistance() >  enemyManager.enemySO.StopRange)
+        if (GetPlayerDistance() > enemyManager.enemySO.AttacksList[enemyManager.CurrentAttack].AttackRange)
         {
             Vector2 direction = ((Vector2)playerTransform.position - (Vector2)transform.position).normalized;
             transform.Translate(direction * currentSpeed * Time.fixedDeltaTime);
@@ -51,7 +56,7 @@ public class EnemyMovement : MonoBehaviour
         transform.Translate(direction * (currentSpeed * 1.75f) * Time.fixedDeltaTime);
     }
 
-    private void HitStopMovement()
+    private void HitKnockback()
     {
         if (enemyManager.enemyState == EnemyState.Hit)
         {
@@ -59,4 +64,24 @@ public class EnemyMovement : MonoBehaviour
             transform.Translate(direction * (currentSpeed * 3.5f) * Time.fixedDeltaTime);
         }
     }
+
+    public void UpdateDash()
+    {
+        if (enemyManager.enemyState == EnemyState.Dash)
+        {
+            if (dashDirection != Vector2.zero)
+            {
+                transform.Translate(dashDirection * (currentSpeed * 3.5f) * Time.fixedDeltaTime);
+            }
+            else
+            {
+                dashDirection = ((Vector2)playerTransform.position - (Vector2)transform.position).normalized;
+                dashDirection *= 3f;
+            }
+        }
+        else
+            dashDirection = Vector2.zero;
+    }
+
+
 }

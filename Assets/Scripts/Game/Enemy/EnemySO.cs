@@ -17,6 +17,7 @@ public class AttackClass
 {
     public float AttackCooldown;
     public float Damage;
+    public float AttackRange;
     public LayerMask TargetLayer;
     public BulletController bullet;
 }
@@ -30,7 +31,6 @@ public class EnemySO : ScriptableObject
 
     [Header("Movement")]
     public Vector2 MinMaxSpeed;
-    public float StopRange;
 
     [Header("Health")]
     public float Health;

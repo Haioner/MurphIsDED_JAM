@@ -12,44 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b65d69e9ccf2c954aad8f233d836d3ad, type: 3}
   m_Name: Wave 0
   m_EditorClassIdentifier: 
+  SceneName: Game
   enemiesList:
   - enemy: {fileID: 11400000, guid: afb068f5d30325246a2f92539e30acaf, type: 2}
     enemySpawnCooldown: 0
   - enemy: {fileID: 11400000, guid: afb068f5d30325246a2f92539e30acaf, type: 2}
-    enemySpawnCooldown: 0
-  - enemy: {fileID: 11400000, guid: afb068f5d30325246a2f92539e30acaf, type: 2}
-    enemySpawnCooldown: 0
-  - enemy: {fileID: 11400000, guid: afb068f5d30325246a2f92539e30acaf, type: 2}
-    enemySpawnCooldown: 0
-  - enemy: {fileID: 11400000, guid: afb068f5d30325246a2f92539e30acaf, type: 2}
-    enemySpawnCooldown: 0
-  - enemy: {fileID: 11400000, guid: afb068f5d30325246a2f92539e30acaf, type: 2}
-    enemySpawnCooldown: 0
-  - enemy: {fileID: 11400000, guid: afb068f5d30325246a2f92539e30acaf, type: 2}
-    enemySpawnCooldown: 0
-  - enemy: {fileID: 11400000, guid: afb068f5d30325246a2f92539e30acaf, type: 2}
-    enemySpawnCooldown: 0
-  - enemy: {fileID: 11400000, guid: afb068f5d30325246a2f92539e30acaf, type: 2}
-    enemySpawnCooldown: 0
-  - enemy: {fileID: 11400000, guid: afb068f5d30325246a2f92539e30acaf, type: 2}
-    enemySpawnCooldown: 0
-  - enemy: {fileID: 11400000, guid: 418c76758e613cf4d878e46ce9c1d08b, type: 2}
-    enemySpawnCooldown: 0
-  - enemy: {fileID: 11400000, guid: 418c76758e613cf4d878e46ce9c1d08b, type: 2}
-    enemySpawnCooldown: 0
-  - enemy: {fileID: 11400000, guid: 418c76758e613cf4d878e46ce9c1d08b, type: 2}
-    enemySpawnCooldown: 0
-  - enemy: {fileID: 11400000, guid: 418c76758e613cf4d878e46ce9c1d08b, type: 2}
-    enemySpawnCooldown: 0
-  - enemy: {fileID: 11400000, guid: 418c76758e613cf4d878e46ce9c1d08b, type: 2}
-    enemySpawnCooldown: 0
-  - enemy: {fileID: 11400000, guid: 418c76758e613cf4d878e46ce9c1d08b, type: 2}
-    enemySpawnCooldown: 0
-  - enemy: {fileID: 11400000, guid: 418c76758e613cf4d878e46ce9c1d08b, type: 2}
-    enemySpawnCooldown: 0
-  - enemy: {fileID: 11400000, guid: 418c76758e613cf4d878e46ce9c1d08b, type: 2}
-    enemySpawnCooldown: 0
-  - enemy: {fileID: 11400000, guid: 418c76758e613cf4d878e46ce9c1d08b, type: 2}
-    enemySpawnCooldown: 0
-  - enemy: {fileID: 11400000, guid: 418c76758e613cf4d878e46ce9c1d08b, type: 2}
     enemySpawnCooldown: 0

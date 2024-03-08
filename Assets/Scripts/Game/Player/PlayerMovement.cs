@@ -34,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (playerManager.playerState == PlayerState.Die) return;
         Move();
     }
 
@@ -62,18 +63,15 @@ public class PlayerMovement : MonoBehaviour
 
     private float GetSpeed()
     {
-        float currentSpeed = 0;
         if (playerManager.playerState != PlayerState.Attack)
-            currentSpeed = gameData.Speed;
+            return gameData.Speed;
         else
-            currentSpeed = gameData.Attacks[gameData.Attack].AttackMovementSpeed;
-
-        return currentSpeed;
+            return gameData.Attacks[gameData.Attack].AttackMovementSpeed;
     }
 
     public void Dash()
     {
-        if (!isDashing)
+        if (!isDashing && playerManager.playerState != PlayerState.Die)
         {
             gameObject.layer = LayerMask.NameToLayer("PlayerDash");
             rb.velocity = Vector2.zero;

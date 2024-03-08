@@ -53,6 +53,17 @@ public class HealthController : MonoBehaviour
         maxHealth = newValue;
     }
 
+    public float GetCurrentHealth()
+    {
+        return currentHealth;
+    }
+
+    public void ResetCurrentHealth()
+    {
+        currentHealth = maxHealth;
+        UpdateHealthText();
+    }
+
     public void Damage(float damage)
     {
         if (currentHealth > 0)
@@ -63,8 +74,6 @@ public class HealthController : MonoBehaviour
             StartCoroutine(nameof(DamageVisibility));
             DamageEvent?.Invoke();
         }
-        else 
-            currentHealth = 0;
 
         UpdateHealthText();
         Die();
@@ -92,8 +101,9 @@ public class HealthController : MonoBehaviour
 
     private void Die()
     {
-        if(currentHealth <= 0)
+        if (currentHealth <= 0)
         {
+            currentHealth = 0;
             DieEvent?.Invoke();
             DieEvent.RemoveAllListeners();
         }

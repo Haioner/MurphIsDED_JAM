@@ -32,6 +32,8 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
+        if (playerManager.playerState == PlayerState.Die) return;
+
         CalculateAttackCooldown();
         if (gameInputs.Player.Attack.ReadValue<float>() > 0)
             Attack();
@@ -45,7 +47,9 @@ public class PlayerAttack : MonoBehaviour
 
     public void Attack()
     {
-        if(currentAttackCooldown <= 0)
+        if (playerManager.playerState == PlayerState.Die) return;
+
+        if (currentAttackCooldown <= 0)
         {
             playerManager.playerState = PlayerState.Attack;
             NextAttack();
@@ -103,7 +107,7 @@ public class PlayerAttack : MonoBehaviour
             if (currentEnemiesDamaged >= maxEnemiesToDamage)
                 break;
 
-            collider.GetComponentInChildren<HealthController>().Damage(gameData.Attacks[currentAttackIndex].AttackDamage);
+            collider.GetComponentInChildren<HealthController>().Damage(gameData.Attacks[savedCurrentAttackIndex].AttackDamage);
             currentEnemiesDamaged++;
         }
     }

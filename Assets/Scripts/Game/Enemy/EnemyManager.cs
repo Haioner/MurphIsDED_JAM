@@ -6,7 +6,7 @@ using UnityEngine.Events;
 [System.Serializable]
 public enum EnemyState
 {
-    Spawn, Idle, Attack, Die, Chase, GetAway, Hit
+    Spawn, Idle, Attack, Die, Chase, GetAway, Hit, Dash
 }
 
 public class EnemyManager : MonoBehaviour
@@ -17,6 +17,7 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private string enemyLayer;
     [SerializeField] private List<Transform> ignoreChildren;
     private Dictionary<Transform, Vector3> originalScales = new Dictionary<Transform, Vector3>();
+    public int CurrentAttack { get; set; }
 
     [HideInInspector]public Animator anim;
     [HideInInspector] public EnemySO enemySO;

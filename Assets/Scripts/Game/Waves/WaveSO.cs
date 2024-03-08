@@ -8,9 +8,9 @@ public class WaveEnemy
     public float enemySpawnCooldown = 1f;
 }
 
-[CreateAssetMenu(fileName = "WaveList")]
+[CreateAssetMenu(menuName = "Wave/WaveSO")]
 public class WaveSO : ScriptableObject
 {
-    //public List<EnemySO> enemiesList = new List<EnemySO>();
+    public string SceneName;
     public List<WaveEnemy> enemiesList = new List<WaveEnemy>();
 }

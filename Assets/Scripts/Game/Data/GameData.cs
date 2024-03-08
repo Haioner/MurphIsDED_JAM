@@ -20,9 +20,15 @@ public class PlayerAttacks
 [System.Serializable]
 public class GameData
 {
+    [Header("Game")]
+    public int MaxGameLevel;
+    public int CurrentGameLevel;
+    public WaveList waveList;
+
     [Header("Player")]
     public int Attack = 0;
     public float Health = 100;
+    public float HealthRegen = 0;
     public float Speed = 5;
 
     [Header("Level")]
@@ -50,5 +56,22 @@ public class GameData
     public void NextAttack(int nextAttack)
     {
         Attack = nextAttack;
+    }
+
+    public void NextGameLevel()
+    {
+        if(CurrentGameLevel  < MaxGameLevel)
+        {
+            CurrentGameLevel++;
+        }
+    }
+
+    public void UnlockNextGameLevel()
+    {
+        if(CurrentGameLevel >= MaxGameLevel && MaxGameLevel < waveList.waveList.Count - 1)
+        {
+            MaxGameLevel++;
+        }
+        DataManager.instance.SaveData();
     }
 }

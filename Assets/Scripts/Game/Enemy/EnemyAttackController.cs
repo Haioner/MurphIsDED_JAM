@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class EnemyAttackController : MonoBehaviour
@@ -25,9 +26,29 @@ public class EnemyAttackController : MonoBehaviour
     private void Update()
     {
         if (enemyManager.enemyState == EnemyState.Die) return;
+        if (GetTargetHealthController().GetCurrentHealth() <= 0) return;
+
         UpdateAttack();
         CalculateCooldown();
         CalculateGetAway();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (enemyManager.enemyState == EnemyState.Die ) return;
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            GetTargetHealthController().Damage(1);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (enemyManager.enemyState == EnemyState.Die || enemyManager.enemyState == EnemyState.Spawn) return;
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            GetTargetHealthController().Damage(enemyManager.enemySO.AttacksList[currentAttack].Damage);
+        }
     }
 
     private float GetAwayTimer()
@@ -72,7 +93,7 @@ public class EnemyAttackController : MonoBehaviour
 
     private bool IsTargetNear()
     {
-        return GetTargetDistance() <= enemyManager.enemySO.StopRange;
+        return GetTargetDistance() <= enemyManager.enemySO.AttacksList[enemyManager.CurrentAttack].AttackRange;
     }
 
     private AttackType GetAttackType()
@@ -130,10 +151,11 @@ public class EnemyAttackController : MonoBehaviour
     {
         if (enemyManager.enemyState == EnemyState.Die) return;
 
-        if (GetTargetDistance() <= enemyManager.enemySO.StopRange + 0.5f)
+        if (GetTargetDistance() <= enemyManager.enemySO.AttacksList[enemyManager.CurrentAttack].AttackRange)
             GetTargetHealthController().Damage(enemyManager.enemySO.AttacksList[currentAttack].Damage);
 
-        enemyManager.enemyState = EnemyState.Chase;
+        if (enemyManager.enemyState != EnemyState.Dash)
+            enemyManager.enemyState = EnemyState.Chase;
     }
 
     private void AttackRanged()
@@ -152,8 +174,25 @@ public class EnemyAttackController : MonoBehaviour
         else
             currentAttack = 0;
 
+        enemyManager.CurrentAttack = currentAttack;
         currentAttackCooldown = enemyManager.enemySO.AttacksList[currentAttack].AttackCooldown;
         targetLayer = enemyManager.enemySO.AttacksList[currentAttack].TargetLayer;
+    }
+
+    public void AttackDashEvent(float dashTime)
+    {
+        StartCoroutine(DashTimer(dashTime));
+    }
+
+    private IEnumerator DashTimer(float time)
+    {
+        enemyManager.enemyState = EnemyState.Dash;
+        yield return new WaitForSeconds(time);
+        if (enemyManager.enemyState != EnemyState.Die)
+        {
+            enemyManager.enemyState = EnemyState.Idle;
+            NextAttack();
+        }
     }
 
     private void SetGetAway()

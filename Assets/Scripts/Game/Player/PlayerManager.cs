@@ -21,4 +21,9 @@ public class PlayerManager : MonoBehaviour
         gameData = DataManager.instance.gameData;
         healthController.SetMaxHealth(gameData.Health);
     }
+
+    public void SetDieState()
+    {
+        playerState = PlayerState.Die;
+    }
 }

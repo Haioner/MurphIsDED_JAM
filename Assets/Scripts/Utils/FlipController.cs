@@ -9,13 +9,11 @@ public class FlipController : MonoBehaviour
     [SerializeField] private List<Transform> ignoreChildren;
     private Dictionary<Transform, Vector3> originalScales = new Dictionary<Transform, Vector3>();
     private Vector2 m_input;
-    private GameData gameData;
     private PlayerManager playerManager;
 
     private void Start()
     {
         playerManager = GetComponent<PlayerManager>();
-        gameData = DataManager.instance.gameData;
 
         foreach (Transform child in ignoreChildren)
         {
@@ -25,7 +23,7 @@ public class FlipController : MonoBehaviour
 
     private void Update()
     {
-        if (playerManager.playerState == PlayerState.Attack) return;
+        if (playerManager.playerState == PlayerState.Attack || playerManager.playerState == PlayerState.Die) return;
 
         if (GetNearestTarget() == null)
             FlipMovement();

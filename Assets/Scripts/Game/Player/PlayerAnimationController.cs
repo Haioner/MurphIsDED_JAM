@@ -15,6 +15,7 @@ public class PlayerAnimationController : MonoBehaviour
     {
         MovementAnimation();
         DashAnimation();
+        DieAnimation();
     }
 
     private void MovementAnimation()
@@ -35,5 +36,13 @@ public class PlayerAnimationController : MonoBehaviour
             playerManager.anim.SetBool("Dash", true);
         else
             playerManager.anim.SetBool("Dash", false);
+    }
+
+    private void DieAnimation()
+    {
+        if(playerManager.playerState == PlayerState.Die)
+        {
+            playerManager.anim.SetBool("Die", true);
+        }
     }
 }

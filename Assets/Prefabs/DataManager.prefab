@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7162006171765417195
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3008946207317071499}
+  - component: {fileID: 7796395693008007426}
+  m_Layer: 0
+  m_Name: DataManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3008946207317071499
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7162006171765417195}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7796395693008007426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7162006171765417195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d852e3058a8b73346a621988756a6365, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameData:
+    MaxGameLevel: 0
+    CurrentGameLevel: 0
+    waveList: {fileID: 11400000, guid: c8248cf2ea4ef8a4f9c342e910507be9, type: 2}
+    Attack: 0
+    Health: 5
+    HealthRegen: 0
+    Speed: 5
+    Level: 1
+    CurrentXP: 0
+    MaxXP: 10
+    XpToAdd: 1
+    DashForce: 20
+    DashCooldown: 2
+    Attacks:
+    - AttackName: SimpleSlash
+      AttackDamage: 2
+      AttackRange: 3
+      AttackCooldown: 1
+      AttackMovementSpeed: 0
+      TargetsCount: 2
+      AttackEquipped: 1
+      AttackUnlocked: 1
+    - AttackName: SlashForward
+      AttackDamage: 1
+      AttackRange: 3.9
+      AttackCooldown: 1
+      AttackMovementSpeed: 0
+      TargetsCount: 1
+      AttackEquipped: 1
+      AttackUnlocked: 0
+    - AttackName: HugeSlash
+      AttackDamage: 5
+      AttackRange: 3.1
+      AttackCooldown: 2
+      AttackMovementSpeed: 0
+      TargetsCount: 3
+      AttackEquipped: 1
+      AttackUnlocked: 0
