@@ -5,6 +5,24 @@ using UnityEngine;
 [System.Serializable]
 public class ItemData
 {
-    public int test;
-    public float test2;
+    [Header("Meele Weapon")]
+    public ItemSO MeeleWeapons;
+    public string CurrentWeaponID;
+
+    [Header("Helmet")]
+    public ItemSO Helmet;
+    public string CurrentHelmetID;
+
+    [Header("ChestPlate")]
+    public ItemSO Chestplate;
+    public string CurrentChestplateID;
+
+    [Header("Legging")]
+    public ItemSO Legging;
+    public string CurrentLeggingID;
+
+    [Header("Boots")]
+    public ItemSO Boots;
+    public string CurrentBootsID;
+
 }

@@ -9,10 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b65d69e9ccf2c954aad8f233d836d3ad, type: 3}
-  m_Name: Wave 0
+  m_Script: {fileID: 11500000, guid: 5a8ce447e198b9e4f88ab13c9ff65843, type: 3}
+  m_Name: Helmets
   m_EditorClassIdentifier: 
-  SceneName: Game
-  enemiesList:
-  - enemy: {fileID: 11400000, guid: afb068f5d30325246a2f92539e30acaf, type: 2}
-    enemySpawnCooldown: 0
+  ItemList:
+  - ItemName: 
+    itemID: 
+    Icon: {fileID: 0}
+    itemType: 0
+    Description: 
+    DamageItem: 0
+    HealthItem: 0
+    HealthRegenItem: 0
+    SpeedItem: 0
+    DashCooldownItem: 0

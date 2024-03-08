@@ -841,6 +841,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: DataManager
       objectReference: {fileID: 0}
+    - target: {fileID: 7796395693008007426, guid: 8284fb03db12fb14b8308654ad32602c, type: 3}
+      propertyPath: itemData.Helmet
+      value: 
+      objectReference: {fileID: 11400000, guid: 23bb892e15950c540a2777e1d05657d6, type: 2}
+    - target: {fileID: 7796395693008007426, guid: 8284fb03db12fb14b8308654ad32602c, type: 3}
+      propertyPath: itemData.MeeleWeapons
+      value: 
+      objectReference: {fileID: 11400000, guid: a6f6b5fe9a955ab41a230cfbc1962a26, type: 2}
+    - target: {fileID: 7796395693008007426, guid: 8284fb03db12fb14b8308654ad32602c, type: 3}
+      propertyPath: gameData.Attacks.Array.data[1].AttackEquipped
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7796395693008007426, guid: 8284fb03db12fb14b8308654ad32602c, type: 3}
+      propertyPath: gameData.Attacks.Array.data[2].AttackEquipped
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

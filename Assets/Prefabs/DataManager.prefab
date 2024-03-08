@@ -49,37 +49,53 @@ MonoBehaviour:
     CurrentGameLevel: 0
     waveList: {fileID: 11400000, guid: c8248cf2ea4ef8a4f9c342e910507be9, type: 2}
     Attack: 0
-    Health: 5
+    Health: 9999
     HealthRegen: 0
     Speed: 5
-    Level: 1
-    CurrentXP: 0
-    MaxXP: 10
-    XpToAdd: 1
+    DamageMultiplier: 1
+    AttackCooldownSpeed: 1
     DashForce: 20
     DashCooldown: 2
     Attacks:
-    - AttackName: SimpleSlash
-      AttackDamage: 2
+    - AttackID: 0
+      AttackName: SimpleSlash
+      AttackDescription: A simple slash
+      AttackLevel: 1
+      AttackIcon: {fileID: 9166712023175037457, guid: 4dffe6eab57ca4e4ba2f967307bd1c29, type: 3}
+      AttackDamage: 5
       AttackRange: 3
       AttackCooldown: 1
       AttackMovementSpeed: 0
       TargetsCount: 2
-      AttackEquipped: 1
-      AttackUnlocked: 1
-    - AttackName: SlashForward
+    - AttackID: 1
+      AttackName: SlashForward
+      AttackDescription: Slash forward
+      AttackLevel: 1
+      AttackIcon: {fileID: 834852548192020694, guid: 4dffe6eab57ca4e4ba2f967307bd1c29, type: 3}
       AttackDamage: 1
       AttackRange: 3.9
       AttackCooldown: 1
       AttackMovementSpeed: 0
       TargetsCount: 1
-      AttackEquipped: 1
-      AttackUnlocked: 0
-    - AttackName: HugeSlash
-      AttackDamage: 5
+    - AttackID: 2
+      AttackName: HugeSlash
+      AttackDescription: A huge slash
+      AttackLevel: 1
+      AttackIcon: {fileID: 405182146505222058, guid: 4dffe6eab57ca4e4ba2f967307bd1c29, type: 3}
+      AttackDamage: 6
       AttackRange: 3.1
-      AttackCooldown: 2
+      AttackCooldown: 3
       AttackMovementSpeed: 0
       TargetsCount: 3
-      AttackEquipped: 1
-      AttackUnlocked: 0
+    EqquipedAttacks: []
+  itemData:
+    MeeleWeapons: {fileID: 0}
+    CurrentWeaponID: 
+    Helmet: {fileID: 0}
+    CurrentHelmetID: 
+    Chestplate: {fileID: 0}
+    CurrentChestplateID: 
+    Legging: {fileID: 0}
+    CurrentLeggingID: 
+    Boots: {fileID: 0}
+    CurrentBootsID: 

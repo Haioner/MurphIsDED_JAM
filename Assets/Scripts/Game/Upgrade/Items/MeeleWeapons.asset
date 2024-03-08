@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a8ce447e198b9e4f88ab13c9ff65843, type: 3}
+  m_Name: MeeleWeapons
+  m_EditorClassIdentifier: 
+  ItemList:
+  - ItemName: 
+    itemID: 
+    Icon: {fileID: 21300000, guid: ebcd7911616cc204dba97d7754c1b7b7, type: 3}
+    itemType: 4
+    Description: A simple sword
+    DamageItem: 1
+    HealthItem: 0
+    HealthRegenItem: 0
+    SpeedItem: 0
+    DashCooldownItem: 0

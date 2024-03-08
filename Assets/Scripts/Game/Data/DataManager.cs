@@ -24,6 +24,7 @@ public class DataManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+        PreventAttackEmpty();
         LoadData();
     }
 
@@ -44,7 +45,25 @@ public class DataManager : MonoBehaviour
         {
             DeleteSaveData();
         }
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            gameData.EqquipedAttacks[0].AttackLevel++;
+        }
 #endif
+    }
+
+    private void PreventAttackEmpty()
+    {
+        if(gameData.EqquipedAttacks.Count <= 0) 
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                gameData.EqquipedAttacks.Add(null);
+            }
+            PlayerAttacks newPlayerAttack = gameData.Attacks[0].Clone();
+            gameData.EqquipedAttacks[0] = newPlayerAttack;
+        }
     }
 
     public void SaveData()

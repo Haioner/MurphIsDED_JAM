@@ -4,36 +4,90 @@ using UnityEngine;
 
 public class UpgradeManager : MonoBehaviour
 {
-    [SerializeField] private GameController controller;
-    [SerializeField] private UpgradeItem upgradeItem;
-    [SerializeField] private Transform upgradeItemsHolder;
-    private List<UpgradeItem> upgradeItems = new List<UpgradeItem>();
+    [Header("CACHE")]
+    public GameController gameController;
+    public InventoryManager inventoryManager;
+
+    [Header("Attacks")]
+    [SerializeField] private int attackItemsCount = 4;
+    [SerializeField] private UpgradeAttackItem upgradeAttackItem;
+    [SerializeField] private Transform upgradeAttacksHolder;
+
+    private List<UpgradeAttackItem> upgradeAttackItems = new List<UpgradeAttackItem>();
+    private List<int> attackIndexList = new List<int>();
+    public PlayerAttacks SelectedAttack { set; get; }
+    private int currentSelectedItem;
 
     private void OnEnable()
     {
         ResetUpgradeList();
-        CreateUpgradeItems();
+        SkipUpgrades();
+        CreateUpgradeAttackItems();
     }
 
-    private void CreateUpgradeItems()
+    public void SkipUpgrades()
     {
-        for (int i = 0; i < 3; i++)
+        int maximizedSkills = 0;
+        for (int i = 0; i < DataManager.instance.gameData.EqquipedAttacks.Count; i++)
         {
-            UpgradeItem item = Instantiate(upgradeItem, upgradeItemsHolder);
-            item.InitiateItem(controller);
-            upgradeItems.Add(item);
+            PlayerAttacks attack = DataManager.instance.gameData.EqquipedAttacks[i];
+            if (attack.AttackLevel >= attack.MaxAttackLevel)
+                maximizedSkills++;
         }
+
+        if (maximizedSkills >= 4)
+        {
+            DataManager.instance.gameData.UnlockNextGameLevel();
+            DataManager.instance.gameData.NextGameLevel();
+            gameController.ResetGameController();
+            DataManager.instance.SaveData();
+        }
+    }
+
+    public void UpdateSelectedItemColor(int itemIndex)
+    {
+        currentSelectedItem = itemIndex;
+        for (int i = 0; i < upgradeAttackItems.Count; i++)
+        {
+            if(i == currentSelectedItem)
+                upgradeAttackItems[i].SetItemNormalColor(Color.yellow);
+            else
+                upgradeAttackItems[i].SetItemNormalColor(Color.white);
+        }
+    }
+
+    private void CreateUpgradeAttackItems()
+    {
+        for (int i = 0; i < attackItemsCount; i++)
+        {
+            UpgradeAttackItem item = Instantiate(upgradeAttackItem, upgradeAttacksHolder);
+            item.InitiateItem(this, GetRandomAttackIndex(), i);
+            upgradeAttackItems.Add(item);
+        }
+    }
+
+    private int GetRandomAttackIndex()
+    {
+        int randIndex = Random.Range(0, DataManager.instance.gameData.Attacks.Count);
+        while (attackIndexList.Contains(randIndex))
+        {
+            randIndex = Random.Range(0, DataManager.instance.gameData.Attacks.Count);
+        }
+        attackIndexList.Add(randIndex);
+
+        return randIndex;
     }
 
     private void ResetUpgradeList()
     {
-        if(upgradeItems.Count > 0)
+        if(upgradeAttackItems.Count > 0)
         {
-            foreach (UpgradeItem item in upgradeItems)
+            foreach (UpgradeAttackItem item in upgradeAttackItems)
             {
                 Destroy(item.gameObject);
             }
-            upgradeItems.Clear();
+            upgradeAttackItems.Clear();
+            attackIndexList.Clear();
         }
     }
 }

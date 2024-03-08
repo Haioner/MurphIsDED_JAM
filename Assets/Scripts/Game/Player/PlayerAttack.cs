@@ -27,7 +27,7 @@ public class PlayerAttack : MonoBehaviour
     {
         playerManager = GetComponent<PlayerManager>();
         gameData = DataManager.instance.gameData;
-        currentRange = gameData.Attacks[currentAttackIndex].AttackRange;
+        currentRange = gameData.EqquipedAttacks[currentAttackIndex].AttackRange;
     }
 
     private void Update()
@@ -41,8 +41,9 @@ public class PlayerAttack : MonoBehaviour
 
     private void CalculateAttackCooldown()
     {
+        float cooldownSpeedMultiplier = gameData.AttackCooldownSpeed;
         if (currentAttackCooldown > 0)
-            currentAttackCooldown -= Time.deltaTime;
+            currentAttackCooldown -= Time.deltaTime * cooldownSpeedMultiplier;
     }
 
     public void Attack()
@@ -60,27 +61,43 @@ public class PlayerAttack : MonoBehaviour
     private void NextAttack()
     {
         // Animation
-        string attackName = gameData.Attacks[currentAttackIndex].AttackName;
-        playerManager.anim.Play(attackName);
+        if(gameData.EqquipedAttacks[currentAttackIndex].AttackName != null)
+        {
+            string attackName = gameData.EqquipedAttacks[currentAttackIndex].AttackName;
+            playerManager.anim.Play(attackName);
+        }
 
-        // Next equipped attack
+
+        //int originalIndex = currentAttackIndex;
+        //do
+        //{
+        //    currentAttackIndex++;
+        //    currentAttackIndex %= gameData.EqquipedAttacks.Count;
+
+        //    if (currentAttackIndex == originalIndex)
+        //    {
+        //        Debug.LogWarning("Todos os ataques estão vazios.");
+        //        return;
+        //    }
+        //} while (gameData.EqquipedAttacks[currentAttackIndex].AttackName == null);
+
         currentAttackIndex++;
-        currentAttackIndex %= gameData.Attacks.Count;
-        while (!gameData.Attacks[currentAttackIndex].AttackEquipped)
+        currentAttackIndex %= gameData.EqquipedAttacks.Count;
+        while (gameData.EqquipedAttacks[currentAttackIndex].AttackName == null)
         {
             currentAttackIndex++;
-            currentAttackIndex %= gameData.Attacks.Count;
+            currentAttackIndex %= gameData.EqquipedAttacks.Count;
         }
         gameData.NextAttack(currentAttackIndex);
 
         // Cooldown
-        currentAttackCooldown = gameData.Attacks[currentAttackIndex].AttackCooldown;
+        currentAttackCooldown = gameData.EqquipedAttacks[currentAttackIndex].AttackCooldown;
     }
 
     public void AttackEvent()
     {
         DamageNearestEnemies();
-        currentRange = gameData.Attacks[currentAttackIndex].AttackRange;
+        currentRange = gameData.EqquipedAttacks[currentAttackIndex].AttackRange;
         savedCurrentAttackIndex = currentAttackIndex;
     }
 
@@ -92,7 +109,7 @@ public class PlayerAttack : MonoBehaviour
     private void DamageNearestEnemies()
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, currentRange, targetLayer);
-        int maxEnemiesToDamage = gameData.Attacks[savedCurrentAttackIndex].TargetsCount;
+        int maxEnemiesToDamage = gameData.EqquipedAttacks[savedCurrentAttackIndex].TargetsCount;
         int currentEnemiesDamaged = 0;
 
         System.Array.Sort(colliders, (c1, c2) =>
@@ -107,7 +124,8 @@ public class PlayerAttack : MonoBehaviour
             if (currentEnemiesDamaged >= maxEnemiesToDamage)
                 break;
 
-            collider.GetComponentInChildren<HealthController>().Damage(gameData.Attacks[savedCurrentAttackIndex].AttackDamage);
+            float damageMultiplier = gameData.DamageMultiplier;
+            collider.GetComponentInChildren<HealthController>().Damage(gameData.EqquipedAttacks[savedCurrentAttackIndex].AttackDamage * damageMultiplier);
             currentEnemiesDamaged++;
         }
     }

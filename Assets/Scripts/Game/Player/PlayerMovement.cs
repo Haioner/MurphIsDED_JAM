@@ -66,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
         if (playerManager.playerState != PlayerState.Attack)
             return gameData.Speed;
         else
-            return gameData.Attacks[gameData.Attack].AttackMovementSpeed;
+            return gameData.EqquipedAttacks[gameData.Attack].AttackMovementSpeed;
     }
 
     public void Dash()

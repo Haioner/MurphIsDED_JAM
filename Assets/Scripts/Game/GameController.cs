@@ -15,6 +15,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private EnemyManager enemyManager;
     [SerializeField] private GameObject winHolder;
     [SerializeField] private GameObject loseHolder;
+    [SerializeField] private GameObject inventoryCanvas;
 
     [Header("Spawn")]
     [SerializeField] private WaveSO waveSO;
@@ -61,6 +62,7 @@ public class GameController : MonoBehaviour
         SetRemainingText();
         winHolder.SetActive(false);
         playerHealth.ResetCurrentHealth();
+        inventoryCanvas.SetActive(false);
     }
 
     private bool CheckWaveScene()
@@ -96,12 +98,13 @@ public class GameController : MonoBehaviour
         if (remainingEnemies <= 0)
         {
             winHolder.SetActive(true);
+            inventoryCanvas.SetActive(true);
         }
     }
 
     public void LoseWave()
     {
-        if (winHolder.activeInHierarchy) return;
+        if (remainingEnemies <= 0) return;
         loseHolder.SetActive(true);
     }
 

@@ -48,10 +48,11 @@ public class MobileCanvasManager : MonoBehaviour
     //Attack
     private void CalculateAttackCooldownImage()
     {
-        attackCooldownImage.fillAmount = currentAttackCooldown / gameData.Attacks[gameData.Attack].AttackCooldown;
+        attackCooldownImage.fillAmount = currentAttackCooldown / gameData.EqquipedAttacks[gameData.Attack].AttackCooldown;
 
+        float cooldownSpeedMultiplier = gameData.AttackCooldownSpeed;
         if (currentAttackCooldown > 0)
-            currentAttackCooldown -= Time.deltaTime;
+            currentAttackCooldown -= Time.deltaTime * cooldownSpeedMultiplier;
     }
 
     private void UpdateHoldAttack()
@@ -65,7 +66,7 @@ public class MobileCanvasManager : MonoBehaviour
     public void StartAttackCooldown()
     {
         if (currentAttackCooldown <= 0)
-            currentAttackCooldown = gameData.Attacks[gameData.Attack].AttackCooldown;
+            currentAttackCooldown = gameData.EqquipedAttacks[gameData.Attack].AttackCooldown;
     }
 
     public void SetAttackHoldActive(bool state)
