@@ -28,7 +28,7 @@ public class ItemShop : MonoBehaviour
     {
         if (item == null) return;
         nameText.SetText(item.ItemList[itemIndex].ItemName);
-        priceText.SetText(item.ItemList[itemIndex].ItemPrice.ToString());
+        priceText.SetText("<sprite index=0>" + item.ItemList[itemIndex].ItemPrice.ToString());
         iconImage.sprite = item.ItemList[itemIndex].Icon;
         ItemStats();
     }
@@ -132,7 +132,7 @@ public class ItemShop : MonoBehaviour
         }
         else
         {
-            string colorTag = itemValue == equippedItemValue ? "<color=#FFFFFF>" : (itemValue < equippedItemValue ? "<color=#FF0000>" : "<color=#00FF00>");
+            string colorTag = itemValue == equippedItemValue ? "<color=#FFFFFF>" : (itemValue < equippedItemValue ? "<color=#EA6000>" : "<color=#00FF6B>");
             return colorTag + prefix + itemValue.ToString() + "</color>\n";
         }
     }
