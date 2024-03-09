@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
+    [Header("Inventory")]
+    [SerializeField] private GameObject inventoryHolder;
+
     [Header("Player Stats")]
     [SerializeField] private TextMeshProUGUI healthText;
     [SerializeField] private TextMeshProUGUI healthRegenText;
@@ -13,11 +16,18 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI damageText;
     [SerializeField] private TextMeshProUGUI cooldownAccelerationText;
 
-    [Header("Items")]
-
-
     [Header("Attacks")]
     [SerializeField] private List<AttackInventorySlot> attackList = new List<AttackInventorySlot>();
+
+    private void Start()
+    {
+        UpdatePlayerStatsText();
+    }
+
+    public void SwitchInventoryHolderState()
+    {
+        inventoryHolder.SetActive(!inventoryHolder.activeInHierarchy);
+    }
 
     public void SetActiveAttackSlotsSelection(bool state)
     {
@@ -34,5 +44,16 @@ public class InventoryManager : MonoBehaviour
         {
             item.UpdateSlotInfo();
         }
+    }
+
+    public void UpdatePlayerStatsText()
+    {
+        GameData gameData = DataManager.instance.gameData;
+        healthText.SetText("HP " + gameData.Health.ToString());
+        healthRegenText.SetText("HP Regen " + gameData.HealthRegen.ToString());
+        speedText.SetText("Speed " + gameData.Speed.ToString());
+        damageText.SetText("DMG Multiplier " + gameData.DamageMultiplier.ToString());
+        dashCooldownText.SetText("Dash CDR " + gameData.DashCooldown.ToString());
+        cooldownAccelerationText.SetText("Attack CDR " + gameData.AttackCooldownSpeed.ToString());
     }
 }

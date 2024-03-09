@@ -12,6 +12,11 @@ public class UpgradeAttackItem : MonoBehaviour
     [SerializeField] private TextMeshProUGUI descriptionText;
     [SerializeField] private Image iconImage;
 
+    [Header("Sprites")]
+    [SerializeField] private Sprite cardSprite;
+    [SerializeField] private Sprite cardSelectedSprite;
+    [SerializeField] private Image cardBackground;
+
     private UpgradeManager upgradeManager;
     private AttackSO playerAttack;
     private int itemIndex;
@@ -35,14 +40,16 @@ public class UpgradeAttackItem : MonoBehaviour
     public void SelectUpgradeItem()
     {
         upgradeManager.SelectedAttack = playerAttack;
-        upgradeManager.inventoryManager.SetActiveAttackSlotsSelection(true);
+        upgradeManager.StartAttackSelection();
         upgradeManager.UpdateSelectedItemColor(itemIndex);
     }
 
-    public void SetItemNormalColor(Color color)
+    public void SetItemSelectionSprite(bool isSelected)
     {
-        ColorBlock colorBlock = GetComponent<Button>().colors;
-        colorBlock.normalColor = color;
-        GetComponent<Button>().colors = colorBlock;
+        if (isSelected)
+            cardBackground.sprite = cardSprite;
+        else
+            cardBackground.sprite = cardSelectedSprite;
+        
     }
 }

@@ -44,6 +44,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d852e3058a8b73346a621988756a6365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemData:
+    dotPoints: 5555
+    MeeleWeapons: {fileID: 11400000, guid: a6f6b5fe9a955ab41a230cfbc1962a26, type: 2}
+    CurrentWeaponIndex: 0
+    Helmet: {fileID: 11400000, guid: 23bb892e15950c540a2777e1d05657d6, type: 2}
+    CurrentHelmetIndex: -1
+    Chestplate: {fileID: 11400000, guid: 14fa6a0781e7c604199244fa5bcd1fe5, type: 2}
+    CurrentChestplateIndex: -1
+    Legging: {fileID: 11400000, guid: 9343a272ba28092458e23c87fe92b3d9, type: 2}
+    CurrentLeggingIndex: -1
+    Boots: {fileID: 11400000, guid: 3f2c56151c630484ba24f571732f3c03, type: 2}
+    CurrentBootsIndex: -1
   gameData:
     MaxGameLevel: 0
     CurrentGameLevel: 0
@@ -60,15 +72,44 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 19696e6b96f7c5644a8ff206817e28b5, type: 2}
     - {fileID: 11400000, guid: 06259574d7797e84bac6762ec34a5224, type: 2}
     - {fileID: 11400000, guid: e6dd544acd8d2a847b057b583f803011, type: 2}
-    EqquipedAttacks: []
-  itemData:
-    MeeleWeapons: {fileID: 0}
-    CurrentWeaponID: 
-    Helmet: {fileID: 0}
-    CurrentHelmetID: 
-    Chestplate: {fileID: 0}
-    CurrentChestplateID: 
-    Legging: {fileID: 0}
-    CurrentLeggingID: 
-    Boots: {fileID: 0}
-    CurrentBootsID: 
+    EqquipedAttacks:
+    - AttackIndex: 0
+      AttackName: 
+      AttackDescription: 
+      AttackLevel: 0
+      MaxAttackLevel: 15
+      AttackDamage: 0
+      AttackRange: 0
+      AttackCooldown: 0
+      AttackMovementSpeed: 0
+      TargetsCount: 0
+    - AttackIndex: 0
+      AttackName: 
+      AttackDescription: 
+      AttackLevel: 0
+      MaxAttackLevel: 15
+      AttackDamage: 0
+      AttackRange: 0
+      AttackCooldown: 0
+      AttackMovementSpeed: 0
+      TargetsCount: 0
+    - AttackIndex: 0
+      AttackName: 
+      AttackDescription: 
+      AttackLevel: 0
+      MaxAttackLevel: 15
+      AttackDamage: 0
+      AttackRange: 0
+      AttackCooldown: 0
+      AttackMovementSpeed: 0
+      TargetsCount: 0
+    - AttackIndex: 0
+      AttackName: 
+      AttackDescription: 
+      AttackLevel: 0
+      MaxAttackLevel: 15
+      AttackDamage: 0
+      AttackRange: 0
+      AttackCooldown: 0
+      AttackMovementSpeed: 0
+      TargetsCount: 0

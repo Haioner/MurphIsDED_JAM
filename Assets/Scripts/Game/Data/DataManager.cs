@@ -9,8 +9,8 @@ public class DataManager : MonoBehaviour
     public static DataManager instance;
     private string encryptionKey = "SenhaCriptografada";
 
-    public GameData gameData = new GameData();
     public ItemData itemData = new ItemData();
+    public GameData gameData = new GameData();
 
     private void Awake()
     {
@@ -55,24 +55,14 @@ public class DataManager : MonoBehaviour
 
     private void PreventAttackEmpty()
     {
-        if(gameData.EqquipedAttacks.Count <= 0) 
-        {
-            for (int i = 0; i < 4; i++)
-            {
-                gameData.EqquipedAttacks.Add(null);
-            }
-            gameData.ConvertAndEquipAttack(gameData.Attacks[0], 0);
-            //gameData.EqquipedAttacks[0] = gameData.Attacks[0];
-     
-            //PlayerAttacks newPlayerAttack = gameData.Attacks[0].Clone();
-            //gameData.EqquipedAttacks[0] = newPlayerAttack;
-        }
+        gameData.ConvertAndEquipAttack(gameData.Attacks[0], 0);
+        
     }
 
     public void SaveData()
     {
-        SaveGameData();
         SaveItemData();
+        SaveGameData();
     }
 
     private void SaveGameData()
@@ -95,8 +85,8 @@ public class DataManager : MonoBehaviour
 
     public void LoadData()
     {
-        LoadGameData();
         LoadItemData();
+        LoadGameData();
     }
 
     private void LoadGameData()
@@ -112,6 +102,8 @@ public class DataManager : MonoBehaviour
         {
             Debug.LogWarning("No game saved data found.");
         }
+
+        gameData.UpdateStats(itemData);
     }
 
     private void LoadItemData()

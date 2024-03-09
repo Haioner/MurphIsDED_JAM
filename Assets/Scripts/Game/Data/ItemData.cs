@@ -5,24 +5,30 @@ using UnityEngine;
 [System.Serializable]
 public class ItemData
 {
+    [Header("DOTPoints")]
+    public int dotPoints;
+
     [Header("Meele Weapon")]
     public ItemSO MeeleWeapons;
-    public string CurrentWeaponID;
+    public int CurrentWeaponIndex;
 
     [Header("Helmet")]
     public ItemSO Helmet;
-    public string CurrentHelmetID;
+    public int CurrentHelmetIndex;
 
     [Header("ChestPlate")]
     public ItemSO Chestplate;
-    public string CurrentChestplateID;
-
-    [Header("Legging")]
-    public ItemSO Legging;
-    public string CurrentLeggingID;
+    public int CurrentChestplateIndex;
 
     [Header("Boots")]
     public ItemSO Boots;
-    public string CurrentBootsID;
+    public int CurrentBootsIndex;
 
+    public void BuyItem(int itemValue)
+    {
+        if(dotPoints >= itemValue)
+        {
+            dotPoints -= itemValue;
+        }
+    }
 }

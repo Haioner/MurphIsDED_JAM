@@ -11,6 +11,7 @@ public class HealthController : MonoBehaviour
     [SerializeField] private float maxHealth;
     [SerializeField] private float currentHealth;
     public UnityEvent DieEvent;
+    private float hpRegen;
 
     [Header("UI")]
     [SerializeField] private TextMeshProUGUI healthText;
@@ -18,7 +19,7 @@ public class HealthController : MonoBehaviour
     [SerializeField] private float progressSpeed = 4.2f;
 
     [Header("Damage")]
-    [SerializeField] private DamageController damageController;
+    [SerializeField] private FloatNumber floatNumber;
     [SerializeField] private GameObject particleDamage;
     public UnityEvent DamageEvent;
 
@@ -35,6 +36,7 @@ public class HealthController : MonoBehaviour
         healthSlider.maxValue = maxHealth;
         healthSlider.value = healthSlider.maxValue;
         UpdateHealthText();
+        StartCoroutine(RegenerateHealthRoutine());
     }
 
     private void Update()
@@ -43,7 +45,7 @@ public class HealthController : MonoBehaviour
         CanvasVisibility();
 
         if (Input.GetKeyDown(KeyCode.F))
-            Damage(1);
+            Damage(-1);
         if (Input.GetKeyDown(KeyCode.G))
             Damage(10);
     }
@@ -51,6 +53,8 @@ public class HealthController : MonoBehaviour
     public void SetMaxHealth(float newValue)
     {
         maxHealth = newValue;
+        currentHealth = maxHealth;
+        UpdateHealthText();
     }
 
     public float GetCurrentHealth()
@@ -69,7 +73,7 @@ public class HealthController : MonoBehaviour
         if (currentHealth > 0)
         {
             currentHealth -= damage;
-            SpawnDamageCanvas(damage);
+            SpawnDamageFloatNumber(damage);
             SpawnHitParticles();
             StartCoroutine(nameof(DamageVisibility));
             DamageEvent?.Invoke();
@@ -109,14 +113,24 @@ public class HealthController : MonoBehaviour
         }
     }
 
-    private void SpawnDamageCanvas(float damageValue)
+    private void SpawnDamageFloatNumber(float damageValue)
     {
         Transform parentTransform = transform.parent;
         Vector3 spawnPosition = (Random.insideUnitCircle * 0.7f) + (Vector2)parentTransform.position;
         spawnPosition.z = 0f;
         spawnPosition.y += 1f;
-        DamageController damage = Instantiate(damageController, spawnPosition, Quaternion.identity);
-        damage.SetDamage(damageValue);
+        FloatNumber floatNum = Instantiate(floatNumber, spawnPosition, Quaternion.identity);
+        floatNum.InitiateFloatNumber(damageValue, 0);
+    }
+
+    private void SpawnHealFloatNumber()
+    {
+        Transform parentTransform = transform.parent;
+        Vector3 spawnPosition = (Random.insideUnitCircle * 0.7f) + (Vector2)parentTransform.position;
+        spawnPosition.z = 0f;
+        spawnPosition.y += 1f;
+        FloatNumber floatNum = Instantiate(floatNumber, spawnPosition, Quaternion.identity);
+        floatNum.InitiateFloatNumber(hpRegen, 1);
     }
 
     public void SpawnHitParticles()
@@ -129,7 +143,7 @@ public class HealthController : MonoBehaviour
 
     private void UpdateHealthText()
     {
-        healthText.SetText(currentHealth.ToString());
+        healthText.SetText(currentHealth.ToString("F2"));
     }
 
     private void UpdateHealthSlider()
@@ -141,5 +155,28 @@ public class HealthController : MonoBehaviour
     private float SpeedProgress()
     {
         return progressSpeed * (maxHealth / 5) * Time.deltaTime;
+    }
+
+    public void UpdateRegenValue(float regenValue)
+    {
+        hpRegen = regenValue;
+    }
+
+    private IEnumerator RegenerateHealthRoutine()
+    {
+        while (true)
+        {
+            if (currentHealth < maxHealth)
+            {
+                currentHealth += hpRegen;
+                SpawnHealFloatNumber();
+            }
+
+            if (currentHealth >= maxHealth)
+                currentHealth = maxHealth;
+
+            UpdateHealthText();
+            yield return new WaitForSeconds(5f);
+        }
     }
 }

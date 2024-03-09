@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Attack 1
   m_EditorClassIdentifier: 
   AttackIndex: 1
-  AttackName: ForwardSlash
+  AttackName: SlashForward
   AttackDescription: A Forward Slash
   AttackLevel: 1
   MaxAttackLevel: 15

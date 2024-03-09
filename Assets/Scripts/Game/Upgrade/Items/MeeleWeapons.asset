@@ -13,13 +13,43 @@ MonoBehaviour:
   m_Name: MeeleWeapons
   m_EditorClassIdentifier: 
   ItemList:
-  - ItemName: 
-    itemID: 
-    Icon: {fileID: 21300000, guid: ebcd7911616cc204dba97d7754c1b7b7, type: 3}
-    itemType: 4
-    Description: A simple sword
-    DamageItem: 1
+  - ItemName: Stick
+    ItemPrice: 1
+    Icon: {fileID: 21300000, guid: 629e0191fbcc130419275f361de1c677, type: 3}
+    itemType: 3
+    DamageItem: 0.3
+    AttackCooldownAccelerator: 0.15
     HealthItem: 0
     HealthRegenItem: 0
     SpeedItem: 0
+    DashCooldownItem: 0
+  - ItemName: Wooden Knife
+    ItemPrice: 2
+    Icon: {fileID: 21300000, guid: 57a4d6138bf6e4a458b119470fec8e6e, type: 3}
+    itemType: 3
+    DamageItem: 0.45
+    AttackCooldownAccelerator: 0.1
+    HealthItem: -0.6
+    HealthRegenItem: 0
+    SpeedItem: 0.2
+    DashCooldownItem: 0
+  - ItemName: Spike Dagger
+    ItemPrice: 2
+    Icon: {fileID: 21300000, guid: b128df608d67c424a8db922d4bdb280b, type: 3}
+    itemType: 3
+    DamageItem: 0.55
+    AttackCooldownAccelerator: 0.1
+    HealthItem: -1
+    HealthRegenItem: 0
+    SpeedItem: 0.2
+    DashCooldownItem: 0
+  - ItemName: Simple Sword
+    ItemPrice: 3
+    Icon: {fileID: 21300000, guid: ebcd7911616cc204dba97d7754c1b7b7, type: 3}
+    itemType: 3
+    DamageItem: 1
+    AttackCooldownAccelerator: -0.04
+    HealthItem: 0
+    HealthRegenItem: 0
+    SpeedItem: -0.3
     DashCooldownItem: 0

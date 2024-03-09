@@ -13,13 +13,23 @@ MonoBehaviour:
   m_Name: Helmets
   m_EditorClassIdentifier: 
   ItemList:
-  - ItemName: 
-    itemID: 
-    Icon: {fileID: 0}
+  - ItemName: Leather Helmet
+    ItemPrice: 1
+    Icon: {fileID: 21300000, guid: b85788f034c97a64bbffa98302510b4e, type: 3}
     itemType: 0
-    Description: 
     DamageItem: 0
-    HealthItem: 0
-    HealthRegenItem: 0
+    AttackCooldownAccelerator: 0
+    HealthItem: 0.5
+    HealthRegenItem: 0.2
+    SpeedItem: 0
+    DashCooldownItem: 0
+  - ItemName: Iron Helmet
+    ItemPrice: 2
+    Icon: {fileID: 21300000, guid: 8a69cd0bfb3f3604397334408d2b23b5, type: 3}
+    itemType: 0
+    DamageItem: 0
+    AttackCooldownAccelerator: 0
+    HealthItem: 1
+    HealthRegenItem: 0.3
     SpeedItem: 0
     DashCooldownItem: 0

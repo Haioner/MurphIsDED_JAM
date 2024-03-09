@@ -1,16 +1,23 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class InputState : MonoBehaviour
 {
     [SerializeField] private bool canPauseTime = true;
     [SerializeField] private CanvasGroup canvasGroup;
     [SerializeField] private KeyCode inputKey = KeyCode.Escape;
+    [SerializeField] private UnityEvent stateEvent;
     private bool _currentState = false;
 
     private void Update()
     {
         if (Input.GetKeyDown(inputKey))
-            ChangeState();
+            InvokeStateEvent();
+    }
+
+    public void InvokeStateEvent()
+    {
+        stateEvent?.Invoke();
     }
 
     public void ChangeState()

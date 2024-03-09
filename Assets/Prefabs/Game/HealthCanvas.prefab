@@ -376,7 +376,7 @@ MonoBehaviour:
   healthText: {fileID: 458075027337252273}
   healthSlider: {fileID: 3552034349689809416}
   progressSpeed: 4.2
-  damageController: {fileID: 8142408682606071169, guid: 8a00f15dab7b0a142b138994d79017f7, type: 3}
+  floatNumber: {fileID: 8142408682606071169, guid: 8a00f15dab7b0a142b138994d79017f7, type: 3}
   particleDamage: {fileID: 9143533478310214026, guid: 52c5af5b73dea0d43b69a33f54b5ac80, type: 3}
   DamageEvent:
     m_PersistentCalls:

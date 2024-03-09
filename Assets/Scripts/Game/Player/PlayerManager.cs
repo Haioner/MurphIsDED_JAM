@@ -19,6 +19,12 @@ public class PlayerManager : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         gameData = DataManager.instance.gameData;
+        UpdateMaxHealth();
+    }
+
+    public void UpdateMaxHealth()
+    {
+        healthController.UpdateRegenValue(gameData.HealthRegen);
         healthController.SetMaxHealth(gameData.Health);
     }
 

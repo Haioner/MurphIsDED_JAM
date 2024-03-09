@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a8ce447e198b9e4f88ab13c9ff65843, type: 3}
+  m_Name: ChestPlates
+  m_EditorClassIdentifier: 
+  ItemList:
+  - ItemName: Chestplate Simple Leather
+    ItemPrice: 2
+    Icon: {fileID: 21300000, guid: 5c9fad3eadc3aff438840ff91377c00a, type: 3}
+    itemType: 1
+    DamageItem: 0
+    AttackCooldownAccelerator: 0
+    HealthItem: 0.8
+    HealthRegenItem: 0.2
+    SpeedItem: -0.1
+    DashCooldownItem: 0
+  - ItemName: Chestplate Simple Iron
+    ItemPrice: 3
+    Icon: {fileID: 21300000, guid: 417fc83cd8700484d9e67f9c1ea686d0, type: 3}
+    itemType: 1
+    DamageItem: 0
+    AttackCooldownAccelerator: 0
+    HealthItem: 1.2
+    HealthRegenItem: 0.2
+    SpeedItem: -0.2
+    DashCooldownItem: 0

@@ -61,8 +61,7 @@ public class PlayerAttack : MonoBehaviour
     private void NextAttack()
     {
         // Animation
-        //if(gameData.EqquipedAttacks[currentAttackIndex].AttackName != null)
-        if(gameData.EqquipedAttacks[currentAttackIndex] != null)
+        if (gameData.EqquipedAttacks[currentAttackIndex] != null)
         {
             string attackName = gameData.EqquipedAttacks[currentAttackIndex].AttackName;
             playerManager.anim.Play(attackName);
@@ -70,7 +69,6 @@ public class PlayerAttack : MonoBehaviour
 
         currentAttackIndex++;
         currentAttackIndex %= gameData.EqquipedAttacks.Count;
-        //while (gameData.EqquipedAttacks[currentAttackIndex].AttackName == null)
         while (gameData.EqquipedAttacks[currentAttackIndex] == null)
         {
             currentAttackIndex++;

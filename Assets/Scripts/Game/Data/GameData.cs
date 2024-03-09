@@ -1,3 +1,4 @@
+using Febucci.UI;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,21 +18,6 @@ public class PlayerAttacks
     public float AttackCooldown;
     public float AttackMovementSpeed;
     public int TargetsCount = 1;
-
-    //public PlayerAttacks Clone()
-    //{
-    //    PlayerAttacks clone = new PlayerAttacks();
-    //    clone.AttackName = this.AttackName;
-    //    clone.AttackDescription = this.AttackDescription;
-    //    clone.AttackLevel = this.AttackLevel;
-    //    clone.AttackIcon = this.AttackIcon;
-    //    clone.AttackDamage = this.AttackDamage;
-    //    clone.AttackRange = this.AttackRange;
-    //    clone.AttackCooldown = this.AttackCooldown;
-    //    clone.AttackMovementSpeed = this.AttackMovementSpeed;
-    //    clone.TargetsCount = this.TargetsCount;
-    //    return clone;
-    //}
 }
 
 [System.Serializable]
@@ -50,15 +36,54 @@ public class GameData
     public float DamageMultiplier = 1;
     public float AttackCooldownSpeed = 1;
 
+    [Header("Base Player Stats")]
+    [SerializeField] private float baseHealth;
+    [SerializeField] private float baseHPRegen, baseSpeed, baseDMGmultiplier, baseCDSpeed, baseDashCD;
+
     [Header("Dash")]
     public float DashForce = 10f;
     public float DashCooldown = 2f;
 
     [Header("Attacks")]
-    //public List<PlayerAttacks> Attacks = new List<PlayerAttacks>();
     public List<AttackSO> Attacks = new List<AttackSO>();
     public List<PlayerAttacks> EqquipedAttacks = new List<PlayerAttacks>();
-    //public List<AttackSO> EqquipedAttacks = new List<AttackSO>();
+
+    #region Stats
+    public void UpdateStats(ItemData itemData)
+    {
+        ResetStats();
+        //Update new
+        UpdateStatsForItemType(itemData.MeeleWeapons, itemData.CurrentWeaponIndex);
+        UpdateStatsForItemType(itemData.Helmet, itemData.CurrentHelmetIndex);
+        UpdateStatsForItemType(itemData.Chestplate, itemData.CurrentChestplateIndex);
+        UpdateStatsForItemType(itemData.Boots, itemData.CurrentBootsIndex);
+    }
+
+    private void UpdateStatsForItemType(ItemSO item, int currentIndex)
+    {
+        if (currentIndex >= 0 && currentIndex < item.ItemList.Count)
+        {
+            var equippedItem = item.ItemList[currentIndex];
+            Health += equippedItem.HealthItem;
+            HealthRegen += equippedItem.HealthRegenItem;
+            Speed += equippedItem.SpeedItem;
+            DamageMultiplier += equippedItem.DamageItem;
+            DashCooldown += equippedItem.DashCooldownItem;
+            AttackCooldownSpeed += equippedItem.AttackCooldownAccelerator;
+        }
+    }
+
+    private void ResetStats()
+    {
+        Health = baseHealth;
+        HealthRegen = baseHPRegen;
+        Speed = baseSpeed;
+        DamageMultiplier = baseDMGmultiplier;
+        AttackCooldownSpeed = baseCDSpeed;
+        DashCooldown = baseDashCD;
+    }
+
+    #endregion
 
     #region Attacks
     public void NextAttack(int nextAttack)
@@ -97,32 +122,6 @@ public class GameData
         EqquipedAttacks[attackSlot] = newAttack;
     }
 
-    //public void EquipAttack(AttackSO attack, int attackIndex)
-    //{
-    //    if (attackIndex >= 0 && attackIndex < EqquipedAttacks.Count)
-    //    {
-    //        AttackSO newEquippedAttack = CloneAttackSO(attack);
-    //        EqquipedAttacks[attackIndex] = newEquippedAttack;
-    //    }
-    //    else
-    //        EqquipedAttacks.Add(null);
-    //}
-
-    //private AttackSO CloneAttackSO(AttackSO original)
-    //{
-    //    AttackSO clone = ScriptableObject.CreateInstance<AttackSO>();
-    //    clone.AttackName = original.AttackName;
-    //    clone.AttackDescription = original.AttackDescription;
-    //    clone.AttackLevel = original.AttackLevel;
-    //    clone.MaxAttackLevel = original.MaxAttackLevel;
-    //    clone.AttackIcon = original.AttackIcon;
-    //    clone.AttackDamage = original.AttackDamage;
-    //    clone.AttackRange = original.AttackRange;
-    //    clone.AttackCooldown = original.AttackCooldown;
-    //    clone.AttackMovementSpeed = original.AttackMovementSpeed;
-    //    clone.TargetsCount = original.TargetsCount;
-    //    return clone;
-    //}
     #endregion
 
     #region Wave
@@ -139,6 +138,7 @@ public class GameData
         if(CurrentGameLevel >= MaxGameLevel && MaxGameLevel < waveList.waveList.Count - 1)
         {
             MaxGameLevel++;
+            DataManager.instance.itemData.dotPoints++;
         }
         DataManager.instance.SaveData();
     }

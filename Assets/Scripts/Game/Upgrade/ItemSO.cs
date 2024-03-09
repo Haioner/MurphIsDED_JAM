@@ -3,7 +3,7 @@ using UnityEngine;
 
 public enum ItemType
 {
-    Helmet, Chestplate, Legging, Boots, //Amor
+    Helmet, Chestplate, Boots, //Amor
     MeeleWeapon, RangedWeapon //Weapon
 }
 
@@ -12,13 +12,13 @@ public class ItemStats
 {
     [Header("Item Type")]
     public string ItemName;
-    public string itemID;
+    public int ItemPrice;
     public Sprite Icon;
     public ItemType itemType;
-    public string Description;
 
     [Header("Stats")]
     public float DamageItem;
+    public float AttackCooldownAccelerator;
     public float HealthItem;
     public float HealthRegenItem;
     public float SpeedItem;
