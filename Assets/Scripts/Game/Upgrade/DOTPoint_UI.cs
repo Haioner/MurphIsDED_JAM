@@ -12,6 +12,6 @@ public class DOTPoint_UI : MonoBehaviour
 
     public void UpdateDotTEXT()
     {
-        dotText.SetText(DataManager.instance.itemData.dotPoints.ToString());
+        dotText.SetText("<sprite index= 0>" + DataManager.instance.itemData.dotPoints.ToString());
     }
 }

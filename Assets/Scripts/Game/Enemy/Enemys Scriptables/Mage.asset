@@ -16,7 +16,12 @@ MonoBehaviour:
   attackType: 0
   MinMaxSpeed: {x: 1.6, y: 1.8}
   Health: 1
-  AnimatorController: {fileID: 0}
+  AnimatorController: {fileID: 9100000, guid: 026e5b536dd48c74992dec78d632083c, type: 2}
+  HeadGFX: {fileID: 6880301931047659894, guid: 26fcffb76b5738d499a0463e14994464, type: 3}
+  BodyGFX: {fileID: -3069793248725877155, guid: 26fcffb76b5738d499a0463e14994464, type: 3}
+  ArmGFX: {fileID: 5631468890167358047, guid: 26fcffb76b5738d499a0463e14994464, type: 3}
+  LegGFX: {fileID: 3383685521739881667, guid: 26fcffb76b5738d499a0463e14994464, type: 3}
+  weaponGFX: {fileID: 21300000, guid: 629e0191fbcc130419275f361de1c677, type: 3}
   AttacksList:
   - AttackCooldown: 2
     Damage: 1
@@ -24,14 +29,6 @@ MonoBehaviour:
     TargetLayer:
       serializedVersion: 2
       m_Bits: 64
-    bullet: {fileID: 6682563522267161197, guid: e0d2ee06a13000a4b857ced4a4b80c40, type: 3}
-  - AttackCooldown: 2
-    Damage: 1
-    AttackRange: 8
-    TargetLayer:
-      serializedVersion: 2
-      m_Bits: 64
-    bullet: {fileID: 6682563522267161197, guid: e0d2ee06a13000a4b857ced4a4b80c40, type: 3}
-  CurrentAttack: 0
+    bullet: {fileID: 7484770367892371788, guid: 79b42baf8614e5b45a7014c55c349778, type: 3}
   isBrave: 0
   MinMaxGetAwayTimer: {x: 1, y: 2}

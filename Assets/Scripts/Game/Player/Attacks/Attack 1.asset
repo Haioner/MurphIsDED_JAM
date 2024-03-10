@@ -18,7 +18,7 @@ MonoBehaviour:
   AttackLevel: 1
   MaxAttackLevel: 15
   AttackIcon: {fileID: 834852548192020694, guid: 4dffe6eab57ca4e4ba2f967307bd1c29, type: 3}
-  AttackDamage: 1
+  AttackDamage: 0.8
   AttackRange: 4
   AttackCooldown: 1
   AttackMovementSpeed: 0

@@ -14,23 +14,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyType: 3
   attackType: 1
-  MinMaxSpeed: {x: 1.3, y: 1.7}
+  MinMaxSpeed: {x: 1.9, y: 2.1}
   Health: 5
   AnimatorController: {fileID: 9100000, guid: 592e4e78c3224ec4699f2dfbd1f15e4b, type: 2}
+  HeadGFX: {fileID: -3054766900094572917, guid: 32ccfbcad3dcceb42a7434ae8fb19409, type: 3}
+  BodyGFX: {fileID: 678585422883540824, guid: 32ccfbcad3dcceb42a7434ae8fb19409, type: 3}
+  ArmGFX: {fileID: -4812737440380003463, guid: 32ccfbcad3dcceb42a7434ae8fb19409, type: 3}
+  LegGFX: {fileID: -6034562253908309285, guid: 32ccfbcad3dcceb42a7434ae8fb19409, type: 3}
+  weaponGFX: {fileID: 21300000, guid: ebcd7911616cc204dba97d7754c1b7b7, type: 3}
   AttacksList:
   - AttackCooldown: 1
     Damage: 2
-    AttackRange: 4
+    AttackRange: 2
     TargetLayer:
       serializedVersion: 2
       m_Bits: 64
     bullet: {fileID: 0}
   - AttackCooldown: 1
     Damage: 5
-    AttackRange: 2
+    AttackRange: 4
     TargetLayer:
       serializedVersion: 2
       m_Bits: 64
     bullet: {fileID: 0}
-  isBrave: 1
+  isBrave: 0
   MinMaxGetAwayTimer: {x: 1, y: 1.5}

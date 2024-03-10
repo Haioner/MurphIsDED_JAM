@@ -15,4 +15,22 @@ MonoBehaviour:
   SceneName: Game
   enemiesList:
   - enemy: {fileID: 11400000, guid: afb068f5d30325246a2f92539e30acaf, type: 2}
-    enemySpawnCooldown: 0
+    enemySpawnCooldown: 1
+  - enemy: {fileID: 11400000, guid: afb068f5d30325246a2f92539e30acaf, type: 2}
+    enemySpawnCooldown: 1
+  - enemy: {fileID: 11400000, guid: afb068f5d30325246a2f92539e30acaf, type: 2}
+    enemySpawnCooldown: 1
+  - enemy: {fileID: 11400000, guid: afb068f5d30325246a2f92539e30acaf, type: 2}
+    enemySpawnCooldown: 1
+  - enemy: {fileID: 11400000, guid: afb068f5d30325246a2f92539e30acaf, type: 2}
+    enemySpawnCooldown: 1
+  - enemy: {fileID: 11400000, guid: afb068f5d30325246a2f92539e30acaf, type: 2}
+    enemySpawnCooldown: 1
+  - enemy: {fileID: 11400000, guid: afb068f5d30325246a2f92539e30acaf, type: 2}
+    enemySpawnCooldown: 1
+  - enemy: {fileID: 11400000, guid: afb068f5d30325246a2f92539e30acaf, type: 2}
+    enemySpawnCooldown: 1
+  - enemy: {fileID: 11400000, guid: afb068f5d30325246a2f92539e30acaf, type: 2}
+    enemySpawnCooldown: 1
+  - enemy: {fileID: 11400000, guid: afb068f5d30325246a2f92539e30acaf, type: 2}
+    enemySpawnCooldown: 1

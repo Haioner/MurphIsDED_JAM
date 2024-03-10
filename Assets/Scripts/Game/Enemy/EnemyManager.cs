@@ -19,6 +19,15 @@ public class EnemyManager : MonoBehaviour
     private Dictionary<Transform, Vector3> originalScales = new Dictionary<Transform, Vector3>();
     public int CurrentAttack { get; set; }
 
+    [Header("Renderers")]
+    [SerializeField] private SpriteRenderer headRender;
+    [SerializeField] private SpriteRenderer bodyRender;
+    [SerializeField] private SpriteRenderer rArmRender;
+    [SerializeField] private SpriteRenderer lArmRender;
+    [SerializeField] private SpriteRenderer rLegRender;
+    [SerializeField] private SpriteRenderer lLegRender;
+    [SerializeField] private SpriteRenderer weaponRender;
+
     [HideInInspector]public Animator anim;
     [HideInInspector] public EnemySO enemySO;
     [HideInInspector] public GameObject player;
@@ -33,15 +42,43 @@ public class EnemyManager : MonoBehaviour
         healthController.enabled=false;
         healthController.SetMaxHealth(enemySO.Health);
         anim = GetComponent<Animator>();
+        anim.runtimeAnimatorController = enemySO.AnimatorController as RuntimeAnimatorController;
     }
 
     private void Update()
     {
         if (enemyState != EnemyState.Die && enemyState != EnemyState.Spawn)
+        {
             Flip();
+            WalkAnimation();
+        }
 
         if (healthController.GetCurrentHealth() <= 0)
             enemyState = EnemyState.Die;
+    }
+
+    public void InitiateEnemy(EnemySO enemy, GameObject player, UnityEvent dieEvent)
+    {
+        enemySO = enemy;
+        this.player = player;
+        healthController.DieEvent.AddListener(dieEvent.Invoke);
+        UpdateGFX();
+    }
+
+    private void UpdateGFX()
+    {
+        headRender.sprite = enemySO.HeadGFX;
+        bodyRender.sprite = enemySO.BodyGFX;
+        lArmRender.sprite = enemySO.ArmGFX;
+        rArmRender.sprite = enemySO.ArmGFX;
+        lLegRender.sprite = enemySO.LegGFX;
+        rLegRender.sprite = enemySO.LegGFX;
+        weaponRender.sprite = enemySO.weaponGFX;
+    }
+
+    private void WalkAnimation()
+    {
+        anim.SetBool("Walk", enemyState == EnemyState.Chase || enemyState == EnemyState.GetAway);
     }
 
     private void Flip()
@@ -75,13 +112,6 @@ public class EnemyManager : MonoBehaviour
                 child.localScale = originalScales[child];
             }
         }
-    }
-
-    public void InitiateEnemy(EnemySO enemy, GameObject player, UnityEvent dieEvent)
-    {
-        enemySO = enemy;
-        this.player = player;
-        healthController.DieEvent.AddListener(dieEvent.Invoke);
     }
 
     public void EnableEnemy()

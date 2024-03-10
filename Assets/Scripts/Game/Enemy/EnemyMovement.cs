@@ -7,20 +7,22 @@ public class EnemyMovement : MonoBehaviour
     private Transform playerTransform;
     private float currentSpeed;
     private Vector2 dashDirection = Vector2.zero;
-    private HealthController playerHealthController;
+    private PlayerManager playerManager;
 
     private void Start()
     {
         enemyManager = GetComponent<EnemyManager>();
         playerTransform = enemyManager.player.transform;
         currentSpeed = GetRandomSpeed();
-        playerHealthController = enemyManager.player.GetComponentInChildren<HealthController>();
+        playerManager = enemyManager.player.GetComponent<PlayerManager>();
     }
 
     private void FixedUpdate()
     {
-        if (playerHealthController.GetCurrentHealth() <= 0) return;
-
+        if (playerManager.playerState == PlayerState.Die)
+        {
+            enemyManager.enemyState = EnemyState.Idle;
+        }
 
         HitKnockback();
         UpdateDash();

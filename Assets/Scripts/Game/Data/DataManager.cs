@@ -124,6 +124,8 @@ public class DataManager : MonoBehaviour
     public void DeleteSaveData()
     {
         PlayerPrefs.DeleteKey("EncryptedGameData");
+        PlayerPrefs.DeleteKey("EncryptedItemData");
+
         PlayerPrefs.Save();
         Debug.Log("Save data deleted.");
         TransitionController.instance.TransitionToSceneName("LevelSelector");

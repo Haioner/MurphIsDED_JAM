@@ -9,11 +9,11 @@ public class FloatNumber : MonoBehaviour
     {
         if(colorIndex == 0)
         {
-            floatText.SetText("<color=#FF0000>" + value.ToString()); //Red
+            floatText.SetText("<color=#FF0000>" + value.ToString("F2")); //Red
         }
         else
         {
-            floatText.SetText("<color=#00FF00>" + "+" + value.ToString()); //Green
+            floatText.SetText("<color=#00FF00>" + "+" + value.ToString("F2")); //Green
         }
     }
 

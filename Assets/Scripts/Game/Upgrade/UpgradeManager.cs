@@ -131,6 +131,11 @@ public class UpgradeManager : MonoBehaviour
 
     #region Items
 
+    public void CancelBuy()
+    {
+        currentItemShop.SetActiveBlackScreen(false);
+    }
+
     public void StartBuyItem(ItemSO item, int itemIndex)
     {
         if (DataManager.instance.itemData.dotPoints >= item.ItemList[itemIndex].ItemPrice)

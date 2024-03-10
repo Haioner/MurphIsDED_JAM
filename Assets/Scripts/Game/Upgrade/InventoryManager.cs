@@ -49,11 +49,11 @@ public class InventoryManager : MonoBehaviour
     public void UpdatePlayerStatsText()
     {
         GameData gameData = DataManager.instance.gameData;
-        healthText.SetText("HP " + gameData.Health.ToString());
-        healthRegenText.SetText("HP Regen " + gameData.HealthRegen.ToString());
-        speedText.SetText("Speed " + gameData.Speed.ToString());
-        damageText.SetText("DMG Multiplier " + gameData.DamageMultiplier.ToString());
-        dashCooldownText.SetText("Dash CDR " + gameData.DashCooldown.ToString());
-        cooldownAccelerationText.SetText("Attack CDR " + gameData.AttackCooldownSpeed.ToString());
+        healthText.SetText("HP " + gameData.Health.ToString("F2"));
+        healthRegenText.SetText("HP Regen " + gameData.HealthRegen.ToString("F2"));
+        speedText.SetText("Speed " + gameData.Speed.ToString("F2"));
+        damageText.SetText("DMG Multiplier " + gameData.DamageMultiplier.ToString("F2"));
+        dashCooldownText.SetText("Dash CDR " + gameData.DashCooldown.ToString("F2"));
+        cooldownAccelerationText.SetText("Attack CDR " + gameData.AttackCooldownSpeed.ToString("F2"));
     }
 }

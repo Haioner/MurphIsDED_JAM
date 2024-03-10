@@ -21,6 +21,18 @@ public class PlayerAttacks
 }
 
 [System.Serializable]
+public class BasePlayerStats
+{
+    [Header("Base Player Stats")]
+    public float baseHealth = 5;
+    public float baseHPRegen;
+    public float baseSpeed = 5;
+    public float baseDMGmultiplier = 1;
+    public float baseCDSpeed = 1;
+    public float baseDashCD;
+}
+
+[System.Serializable]
 public class GameData
 {
     [Header("Game")]
@@ -28,17 +40,16 @@ public class GameData
     public int CurrentGameLevel;
     public WaveList waveList;
 
-    [Header("Player")]
+    [Header("Player Base Stats")]
+    public BasePlayerStats baseStats;
+
+    [Header("Player Stats")]
     public int Attack = 0;
     public float Health = 100;
     public float HealthRegen = 0;
     public float Speed = 5;
     public float DamageMultiplier = 1;
     public float AttackCooldownSpeed = 1;
-
-    [Header("Base Player Stats")]
-    [SerializeField] private float baseHealth;
-    [SerializeField] private float baseHPRegen, baseSpeed, baseDMGmultiplier, baseCDSpeed, baseDashCD;
 
     [Header("Dash")]
     public float DashForce = 10f;
@@ -68,19 +79,19 @@ public class GameData
             HealthRegen += equippedItem.HealthRegenItem;
             Speed += equippedItem.SpeedItem;
             DamageMultiplier += equippedItem.DamageItem;
-            DashCooldown += equippedItem.DashCooldownItem;
+            DashCooldown -= equippedItem.DashCooldownItem;
             AttackCooldownSpeed += equippedItem.AttackCooldownAccelerator;
         }
     }
 
     private void ResetStats()
     {
-        Health = baseHealth;
-        HealthRegen = baseHPRegen;
-        Speed = baseSpeed;
-        DamageMultiplier = baseDMGmultiplier;
-        AttackCooldownSpeed = baseCDSpeed;
-        DashCooldown = baseDashCD;
+        Health = baseStats.baseHealth;
+        HealthRegen = baseStats.baseHPRegen;
+        Speed = baseStats.baseSpeed;
+        DamageMultiplier = baseStats.baseDMGmultiplier;
+        AttackCooldownSpeed = baseStats.baseCDSpeed;
+        DashCooldown = baseStats.baseDashCD;
     }
 
     #endregion
@@ -94,7 +105,7 @@ public class GameData
     public void UpgradeAttack(int slotIndex)
     {
         EqquipedAttacks[slotIndex].AttackLevel++;
-        EqquipedAttacks[slotIndex].AttackDamage++;
+        EqquipedAttacks[slotIndex].AttackDamage += 0.1f;
 
         if (EqquipedAttacks[slotIndex].AttackLevel % 2 == 0 && EqquipedAttacks[slotIndex].AttackCooldown > 0.15f)
             EqquipedAttacks[slotIndex].AttackCooldown -= 0.05f;

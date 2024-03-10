@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEngine.Rendering.DebugUI;
 
 public class ItemShop : MonoBehaviour
 {
@@ -11,6 +10,7 @@ public class ItemShop : MonoBehaviour
     [SerializeField] private TextMeshProUGUI priceText;
     [SerializeField] private TextMeshProUGUI statsText;
     [SerializeField] private Image iconImage;
+    [SerializeField] private GameObject blackSceen;
 
     private ItemSO item;
     private UpgradeManager upgradeManager;
@@ -22,6 +22,11 @@ public class ItemShop : MonoBehaviour
         this.upgradeManager = upgradeManager;
         this.itemIndex = itemIndex;
         SetItemInfo();
+    }
+
+    public void SetActiveBlackScreen(bool state)
+    {
+        blackSceen.SetActive(state);
     }
 
     private void SetItemInfo()

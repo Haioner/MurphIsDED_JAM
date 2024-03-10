@@ -35,8 +35,13 @@ public class EnemySO : ScriptableObject
     [Header("Health")]
     public float Health;
 
-    [Header("Animation")]
+    [Header("GFX")]
     public AnimatorController AnimatorController;
+    public Sprite HeadGFX;
+    public Sprite BodyGFX;
+    public Sprite ArmGFX;
+    public Sprite LegGFX;
+    public Sprite weaponGFX;
 
     [Header("Attack")]
     public List<AttackClass> AttacksList = new List<AttackClass>();

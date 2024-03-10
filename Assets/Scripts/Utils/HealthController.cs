@@ -148,6 +148,7 @@ public class HealthController : MonoBehaviour
 
     private void UpdateHealthSlider()
     {
+        if (currentHealth < 0) return;
         healthSlider.maxValue = maxHealth;
         healthSlider.value = Mathf.MoveTowards(healthSlider.value, currentHealth, SpeedProgress());
     }
@@ -166,10 +167,11 @@ public class HealthController : MonoBehaviour
     {
         while (true)
         {
-            if (currentHealth < maxHealth)
+            if (currentHealth < maxHealth && hpRegen > 0) 
             {
+                if (GetComponentInParent<PlayerManager>().playerState == PlayerState.Die) break;
                 currentHealth += hpRegen;
-                SpawnHealFloatNumber();
+                SpawnHealFloatNumber();      
             }
 
             if (currentHealth >= maxHealth)

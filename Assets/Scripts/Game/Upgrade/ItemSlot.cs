@@ -27,7 +27,7 @@ public class ItemSlot : MonoBehaviour
 
     private void EmptyItem()
     {
-        nameText.SetText("Empty" + item.ItemList[0].itemType);
+        nameText.SetText("Empty " + item.ItemList[0].itemType);
         statsText.SetText("");
         itemIcon.sprite = emptySprite;
     }

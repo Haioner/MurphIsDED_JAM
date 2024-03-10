@@ -26,7 +26,7 @@ public class EnemyAttackController : MonoBehaviour
     private void Update()
     {
         if (enemyManager.enemyState == EnemyState.Die) return;
-        if (GetTargetHealthController().GetCurrentHealth() <= 0) return;
+        if (GetPlayerManager().playerState == PlayerState.Die) return;
 
         UpdateAttack();
         CalculateCooldown();
@@ -81,6 +81,12 @@ public class EnemyAttackController : MonoBehaviour
     private HealthController GetTargetHealthController()
     {
         return GetNearestTarget().GetComponentInChildren<HealthController>();
+    }
+
+    private PlayerManager GetPlayerManager()
+    {
+        if (GetNearestTarget().GetComponent<PlayerManager>() == null) return null;
+        else return GetNearestTarget().GetComponent<PlayerManager>();
     }
 
     private float GetTargetDistance()
@@ -151,7 +157,7 @@ public class EnemyAttackController : MonoBehaviour
     {
         if (enemyManager.enemyState == EnemyState.Die) return;
 
-        if (GetTargetDistance() <= enemyManager.enemySO.AttacksList[enemyManager.CurrentAttack].AttackRange)
+        if (GetTargetDistance() <= enemyManager.enemySO.AttacksList[enemyManager.CurrentAttack].AttackRange + 1)
             GetTargetHealthController().Damage(enemyManager.enemySO.AttacksList[currentAttack].Damage);
 
         if (enemyManager.enemyState != EnemyState.Dash)
@@ -164,7 +170,9 @@ public class EnemyAttackController : MonoBehaviour
 
         BulletController bullet = Instantiate(enemyManager.enemySO.AttacksList[currentAttack].bullet, attackPivot.position, Quaternion.identity);
         bullet.InitiateBullet(GetNearestTarget(), targetLayer, enemyManager.enemySO.AttacksList[currentAttack].Damage);
-        enemyManager.enemyState = EnemyState.Chase;
+
+        if (enemyManager.enemyState != EnemyState.Dash)
+            enemyManager.enemyState = EnemyState.Chase;
     }
 
     private void NextAttack()
@@ -197,7 +205,7 @@ public class EnemyAttackController : MonoBehaviour
 
     private void SetGetAway()
     {
-        if (enemyManager.enemySO.isBrave || enemyManager.enemyState != EnemyState.Die) return;
+        if (enemyManager.enemySO.isBrave || enemyManager.enemyState == EnemyState.Die) return;
         canGetAway = GetRandomGetAway();
     }
 

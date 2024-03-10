@@ -28,6 +28,7 @@ public class PlayerAttack : MonoBehaviour
         playerManager = GetComponent<PlayerManager>();
         gameData = DataManager.instance.gameData;
         currentRange = gameData.EqquipedAttacks[currentAttackIndex].AttackRange;
+        currentAttackIndex = gameData.Attack;
     }
 
     private void Update()

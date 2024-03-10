@@ -81,11 +81,13 @@ public class GameController : MonoBehaviour
 
     public void BackToMenu()
     {
+        Time.timeScale = 1;
         TransitionController.instance.TransitionToSceneName("LevelSelector");
     }
 
     public void ReloadScene()
     {
+        Time.timeScale = 1;
         Scene scene = SceneManager.GetActiveScene();
         string currentSceneName = scene.name;
         TransitionController.instance.TransitionToSceneName(currentSceneName);

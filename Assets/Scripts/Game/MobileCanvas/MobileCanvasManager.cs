@@ -12,6 +12,7 @@ public class MobileCanvasManager : MonoBehaviour
 
     [Header("ATTACK")]
     [SerializeField] private Image attackCooldownImage;
+    [SerializeField] private Image attackIcon;
     [SerializeField] private UnityEvent holdAttackEvent;
     private float currentAttackCooldown;
     private bool attackHold;
@@ -53,6 +54,8 @@ public class MobileCanvasManager : MonoBehaviour
         float cooldownSpeedMultiplier = gameData.AttackCooldownSpeed;
         if (currentAttackCooldown > 0)
             currentAttackCooldown -= Time.deltaTime * cooldownSpeedMultiplier;
+        else
+            UpdateCurrentAttackIcon();
     }
 
     private void UpdateHoldAttack()
@@ -67,6 +70,12 @@ public class MobileCanvasManager : MonoBehaviour
     {
         if (currentAttackCooldown <= 0)
             currentAttackCooldown = gameData.EqquipedAttacks[gameData.Attack].AttackCooldown;
+    }
+
+    private void UpdateCurrentAttackIcon()
+    {
+        Sprite currentAttackIcon = DataManager.instance.gameData.Attacks[gameData.EqquipedAttacks[DataManager.instance.gameData.Attack].AttackIndex].AttackIcon;
+        attackIcon.sprite = currentAttackIcon;
     }
 
     public void SetAttackHoldActive(bool state)

@@ -29,7 +29,7 @@ MonoBehaviour:
     itemType: 0
     DamageItem: 0
     AttackCooldownAccelerator: 0
-    HealthItem: 1
+    HealthItem: 0.7
     HealthRegenItem: 0.3
     SpeedItem: 0
     DashCooldownItem: 0

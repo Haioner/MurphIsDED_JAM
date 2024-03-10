@@ -52,22 +52,27 @@ MonoBehaviour:
     CurrentHelmetIndex: -1
     Chestplate: {fileID: 11400000, guid: 14fa6a0781e7c604199244fa5bcd1fe5, type: 2}
     CurrentChestplateIndex: -1
-    Legging: {fileID: 11400000, guid: 9343a272ba28092458e23c87fe92b3d9, type: 2}
-    CurrentLeggingIndex: -1
     Boots: {fileID: 11400000, guid: 3f2c56151c630484ba24f571732f3c03, type: 2}
     CurrentBootsIndex: -1
   gameData:
     MaxGameLevel: 0
     CurrentGameLevel: 0
     waveList: {fileID: 11400000, guid: c8248cf2ea4ef8a4f9c342e910507be9, type: 2}
+    baseStats:
+      baseHealth: 5
+      baseHPRegen: 0
+      baseSpeed: 5
+      baseDMGmultiplier: 1
+      baseCDSpeed: 1
+      baseDashCD: 2
     Attack: 0
-    Health: 9999
+    Health: 0
     HealthRegen: 0
-    Speed: 5
-    DamageMultiplier: 1
-    AttackCooldownSpeed: 1
+    Speed: 0
+    DamageMultiplier: 0
+    AttackCooldownSpeed: 0
     DashForce: 20
-    DashCooldown: 2
+    DashCooldown: 0
     Attacks:
     - {fileID: 11400000, guid: 19696e6b96f7c5644a8ff206817e28b5, type: 2}
     - {fileID: 11400000, guid: 06259574d7797e84bac6762ec34a5224, type: 2}
