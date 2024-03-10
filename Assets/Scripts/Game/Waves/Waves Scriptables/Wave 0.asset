@@ -14,7 +14,83 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SceneName: Game
   enemiesList:
+  - enemy: {fileID: 11400000, guid: afb068f5d30325246a2f92539e30acaf, type: 2}
+    enemySpawnCooldown: 0
+  - enemy: {fileID: 11400000, guid: 971875c9408587f47a759ef1fe6d01b5, type: 2}
+    enemySpawnCooldown: 0
+  - enemy: {fileID: 11400000, guid: 07b0119419717c3479a52b26a334f669, type: 2}
+    enemySpawnCooldown: 0
+  - enemy: {fileID: 11400000, guid: 418c76758e613cf4d878e46ce9c1d08b, type: 2}
+    enemySpawnCooldown: 0
+  - enemy: {fileID: 11400000, guid: 418c76758e613cf4d878e46ce9c1d08b, type: 2}
+    enemySpawnCooldown: 0
+  - enemy: {fileID: 11400000, guid: 418c76758e613cf4d878e46ce9c1d08b, type: 2}
+    enemySpawnCooldown: 0
+  - enemy: {fileID: 11400000, guid: 418c76758e613cf4d878e46ce9c1d08b, type: 2}
+    enemySpawnCooldown: 0
+  - enemy: {fileID: 11400000, guid: 418c76758e613cf4d878e46ce9c1d08b, type: 2}
+    enemySpawnCooldown: 0
+  - enemy: {fileID: 11400000, guid: 418c76758e613cf4d878e46ce9c1d08b, type: 2}
+    enemySpawnCooldown: 0
   - enemy: {fileID: 11400000, guid: 418c76758e613cf4d878e46ce9c1d08b, type: 2}
     enemySpawnCooldown: 1
-  - enemy: {fileID: 11400000, guid: afb068f5d30325246a2f92539e30acaf, type: 2}
+  - enemy: {fileID: 11400000, guid: 418c76758e613cf4d878e46ce9c1d08b, type: 2}
+    enemySpawnCooldown: 1
+  - enemy: {fileID: 11400000, guid: 418c76758e613cf4d878e46ce9c1d08b, type: 2}
+    enemySpawnCooldown: 1
+  - enemy: {fileID: 11400000, guid: 418c76758e613cf4d878e46ce9c1d08b, type: 2}
+    enemySpawnCooldown: 1
+  - enemy: {fileID: 11400000, guid: 418c76758e613cf4d878e46ce9c1d08b, type: 2}
+    enemySpawnCooldown: 1
+  - enemy: {fileID: 11400000, guid: 418c76758e613cf4d878e46ce9c1d08b, type: 2}
+    enemySpawnCooldown: 1
+  - enemy: {fileID: 11400000, guid: 418c76758e613cf4d878e46ce9c1d08b, type: 2}
+    enemySpawnCooldown: 1
+  - enemy: {fileID: 11400000, guid: 418c76758e613cf4d878e46ce9c1d08b, type: 2}
+    enemySpawnCooldown: 1
+  - enemy: {fileID: 11400000, guid: 418c76758e613cf4d878e46ce9c1d08b, type: 2}
+    enemySpawnCooldown: 1
+  - enemy: {fileID: 11400000, guid: 418c76758e613cf4d878e46ce9c1d08b, type: 2}
+    enemySpawnCooldown: 1
+  - enemy: {fileID: 11400000, guid: 418c76758e613cf4d878e46ce9c1d08b, type: 2}
+    enemySpawnCooldown: 1
+  - enemy: {fileID: 11400000, guid: 418c76758e613cf4d878e46ce9c1d08b, type: 2}
+    enemySpawnCooldown: 1
+  - enemy: {fileID: 11400000, guid: 418c76758e613cf4d878e46ce9c1d08b, type: 2}
+    enemySpawnCooldown: 1
+  - enemy: {fileID: 11400000, guid: 418c76758e613cf4d878e46ce9c1d08b, type: 2}
+    enemySpawnCooldown: 1
+  - enemy: {fileID: 11400000, guid: 418c76758e613cf4d878e46ce9c1d08b, type: 2}
+    enemySpawnCooldown: 1
+  - enemy: {fileID: 11400000, guid: 418c76758e613cf4d878e46ce9c1d08b, type: 2}
+    enemySpawnCooldown: 1
+  - enemy: {fileID: 11400000, guid: 418c76758e613cf4d878e46ce9c1d08b, type: 2}
+    enemySpawnCooldown: 1
+  - enemy: {fileID: 11400000, guid: 418c76758e613cf4d878e46ce9c1d08b, type: 2}
+    enemySpawnCooldown: 1
+  - enemy: {fileID: 11400000, guid: 418c76758e613cf4d878e46ce9c1d08b, type: 2}
+    enemySpawnCooldown: 1
+  - enemy: {fileID: 11400000, guid: 418c76758e613cf4d878e46ce9c1d08b, type: 2}
+    enemySpawnCooldown: 1
+  - enemy: {fileID: 11400000, guid: 418c76758e613cf4d878e46ce9c1d08b, type: 2}
+    enemySpawnCooldown: 1
+  - enemy: {fileID: 11400000, guid: 418c76758e613cf4d878e46ce9c1d08b, type: 2}
+    enemySpawnCooldown: 1
+  - enemy: {fileID: 11400000, guid: 418c76758e613cf4d878e46ce9c1d08b, type: 2}
+    enemySpawnCooldown: 1
+  - enemy: {fileID: 11400000, guid: 418c76758e613cf4d878e46ce9c1d08b, type: 2}
+    enemySpawnCooldown: 1
+  - enemy: {fileID: 11400000, guid: 418c76758e613cf4d878e46ce9c1d08b, type: 2}
+    enemySpawnCooldown: 1
+  - enemy: {fileID: 11400000, guid: 418c76758e613cf4d878e46ce9c1d08b, type: 2}
+    enemySpawnCooldown: 1
+  - enemy: {fileID: 11400000, guid: 418c76758e613cf4d878e46ce9c1d08b, type: 2}
+    enemySpawnCooldown: 1
+  - enemy: {fileID: 11400000, guid: 418c76758e613cf4d878e46ce9c1d08b, type: 2}
+    enemySpawnCooldown: 1
+  - enemy: {fileID: 11400000, guid: 418c76758e613cf4d878e46ce9c1d08b, type: 2}
+    enemySpawnCooldown: 1
+  - enemy: {fileID: 11400000, guid: 418c76758e613cf4d878e46ce9c1d08b, type: 2}
+    enemySpawnCooldown: 1
+  - enemy: {fileID: 11400000, guid: 418c76758e613cf4d878e46ce9c1d08b, type: 2}
     enemySpawnCooldown: 1

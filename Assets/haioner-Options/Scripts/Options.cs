@@ -3,6 +3,7 @@ using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditorInternal;
 
 public class Options : MonoBehaviour
 {
@@ -397,7 +398,8 @@ public class Options : MonoBehaviour
     public void BackToMenu()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene(0); //Menu Scene
+        //SceneManager.LoadScene(0); //Menu Scene
+        TransitionController.instance.TransitionToSceneName("LevelSelector");
     }
 
     #region Sensitivity

@@ -14,12 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AttackIndex: 2
   AttackName: HugeSlash
-  AttackDescription: A Huge Slash
+  AttackDescription: A charged area attack
   AttackLevel: 1
   MaxAttackLevel: 15
-  AttackIcon: {fileID: 567328745045655870, guid: 4dffe6eab57ca4e4ba2f967307bd1c29, type: 3}
+  AttackIcon: {fileID: 21300000, guid: 184c2300d92389e43b9ebbdf9009d5ad, type: 3}
+  AttackSound: {fileID: 8300000, guid: 3a62f14c2ef433b4192e8b932c856b9b, type: 3}
   AttackDamage: 2
   AttackRange: 3.5
-  AttackCooldown: 1
+  AttackCooldown: 3
   AttackMovementSpeed: 0
   TargetsCount: 3

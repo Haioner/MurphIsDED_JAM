@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7abe2fc0c4bcbb74b81142993c510d4f, type: 3}
+  m_Name: Enemy2
+  m_EditorClassIdentifier: 
+  attackType: 0
+  MinMaxSpeed: {x: 1.6, y: 1.8}
+  Health: 2
+  AnimatorController: {fileID: 9100000, guid: 026e5b536dd48c74992dec78d632083c, type: 2}
+  HeadGFX: {fileID: 6821492501662107101, guid: 0d94269f56ce5904f91e3fda0eda1a74, type: 3}
+  BodyGFX: {fileID: 119729430168671925, guid: 0d94269f56ce5904f91e3fda0eda1a74, type: 3}
+  ArmGFX: {fileID: -8709348222274074493, guid: 0d94269f56ce5904f91e3fda0eda1a74, type: 3}
+  LegGFX: {fileID: -2478509615962628763, guid: 0d94269f56ce5904f91e3fda0eda1a74, type: 3}
+  weaponGFX: {fileID: 21300000, guid: 82d661c11a6c9524ab7f6510839bc765, type: 3}
+  AttacksList:
+  - AttackAnimName: ShootArrow
+    AttackCooldown: 3
+    Damage: 1
+    AttackRange: 8
+    TargetLayer:
+      serializedVersion: 2
+      m_Bits: 64
+    bullet: {fileID: 6970144437125267282, guid: 5c9972d66d4b20446b92b375634e43f1, type: 3}
+    attackAudio: {fileID: 8300000, guid: 3a62f14c2ef433b4192e8b932c856b9b, type: 3}
+  isBrave: 0
+  MinMaxGetAwayTimer: {x: 1, y: 2}

@@ -14,10 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AttackIndex: 0
   AttackName: SimpleSlash
-  AttackDescription: A Simple Slash
+  AttackDescription: A simple downward slash
   AttackLevel: 1
   MaxAttackLevel: 15
   AttackIcon: {fileID: 21300000, guid: df612873e65660a45912d4f3922c1043, type: 3}
+  AttackSound: {fileID: 8300000, guid: 3a62f14c2ef433b4192e8b932c856b9b, type: 3}
   AttackDamage: 1
   AttackRange: 3
   AttackCooldown: 1

@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Dash")]
     [SerializeField] private float dashStopTime = 0.15f;
     [SerializeField] private UnityEvent dashCooldownEvent;
+    [SerializeField] private AudioSource dashSource;
 
     [Header("CACHE")]
     [SerializeField] private Rigidbody2D rb;
@@ -73,6 +74,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!isDashing && playerManager.playerState != PlayerState.Die)
         {
+            dashSource.Play();
             gameObject.layer = LayerMask.NameToLayer("PlayerDash");
             rb.velocity = Vector2.zero;
 

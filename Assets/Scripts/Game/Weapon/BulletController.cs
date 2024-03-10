@@ -29,6 +29,11 @@ public class BulletController : MonoBehaviour
     {
         MoveToTarget();
         MoveToTargetDirection();
+
+        if(GetTargetDistance() <= 1f)
+        {
+            HitTarget();
+        }
     }
 
     private void RotateToTarget()
@@ -50,6 +55,8 @@ public class BulletController : MonoBehaviour
             Vector3 targetPosition = new Vector3(target.position.x, target.position.y + 0.7f, transform.position.z);
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, bulletSpeed * Time.deltaTime);
         }
+        else if (canFollowTarget && target == null)
+            Destroy(gameObject);
     }
 
     private void MoveToTargetDirection()
@@ -58,12 +65,25 @@ public class BulletController : MonoBehaviour
             transform.Translate(Vector2.right * bulletSpeed * Time.deltaTime);
     }
 
+    private float GetTargetDistance()
+    {
+        if (target != target.CompareTag("Player"))
+            return Vector2.Distance(transform.position, target.position);
+        else
+            return 999;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if((targetLayerMask.value & (1 << collision.transform.gameObject.layer)) > 0)
         {
-            collision.GetComponentInChildren<HealthController>().Damage(damage);
-            Destroy(gameObject);
+            HitTarget();
         }
+    }
+
+    private void HitTarget()
+    {
+        target.GetComponentInChildren<HealthController>().Damage(damage);
+        Destroy(gameObject);
     }
 }

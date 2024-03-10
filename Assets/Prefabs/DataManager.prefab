@@ -77,8 +77,12 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 19696e6b96f7c5644a8ff206817e28b5, type: 2}
     - {fileID: 11400000, guid: 06259574d7797e84bac6762ec34a5224, type: 2}
     - {fileID: 11400000, guid: e6dd544acd8d2a847b057b583f803011, type: 2}
+    - {fileID: 11400000, guid: e609e2c7d535f514aa43a916fbee415e, type: 2}
+    - {fileID: 11400000, guid: 7bf8cdd3dab94c145b4cf3b64519639a, type: 2}
+    - {fileID: 11400000, guid: 29aa2be7640312542a461395b6b18bb5, type: 2}
+    - {fileID: 11400000, guid: bcf8c21b92fd03c428a3accc31621137, type: 2}
     EqquipedAttacks:
-    - AttackIndex: 0
+    - AttackIndex: -1
       AttackName: 
       AttackDescription: 
       AttackLevel: 0
@@ -88,7 +92,7 @@ MonoBehaviour:
       AttackCooldown: 0
       AttackMovementSpeed: 0
       TargetsCount: 0
-    - AttackIndex: 0
+    - AttackIndex: -1
       AttackName: 
       AttackDescription: 
       AttackLevel: 0
@@ -98,7 +102,7 @@ MonoBehaviour:
       AttackCooldown: 0
       AttackMovementSpeed: 0
       TargetsCount: 0
-    - AttackIndex: 0
+    - AttackIndex: -1
       AttackName: 
       AttackDescription: 
       AttackLevel: 0
@@ -108,7 +112,7 @@ MonoBehaviour:
       AttackCooldown: 0
       AttackMovementSpeed: 0
       TargetsCount: 0
-    - AttackIndex: 0
+    - AttackIndex: -1
       AttackName: 
       AttackDescription: 
       AttackLevel: 0

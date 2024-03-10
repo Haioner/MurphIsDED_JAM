@@ -15,18 +15,20 @@ public enum AttackType
 [System.Serializable]
 public class AttackClass
 {
+    public string AttackAnimName;
     public float AttackCooldown;
     public float Damage;
     public float AttackRange;
     public LayerMask TargetLayer;
     public BulletController bullet;
+    public AudioClip attackAudio;
 }
 
 [CreateAssetMenu(fileName ="EnemyType")]
 public class EnemySO : ScriptableObject
 {
     [Header("Types")]
-    public EnemyType enemyType;
+    //public EnemyType enemyType;
     public AttackType attackType;
 
     [Header("Movement")]

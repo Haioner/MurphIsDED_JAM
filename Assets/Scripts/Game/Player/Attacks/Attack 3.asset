@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad3354ebd0bff714399a8898d4b65b39, type: 3}
+  m_Name: Attack 3
+  m_EditorClassIdentifier: 
+  AttackIndex: 3
+  AttackName: WhirlwindSlash
+  AttackDescription: Spin attack hitting many opponents
+  AttackLevel: 1
+  MaxAttackLevel: 15
+  AttackIcon: {fileID: 21300000, guid: e902b5ecb135cab4791738b9140ba3cd, type: 3}
+  AttackSound: {fileID: 8300000, guid: 5b6c19abe96f693469c703adff402687, type: 3}
+  AttackDamage: 1.25
+  AttackRange: 4
+  AttackCooldown: 4
+  AttackMovementSpeed: 0.5
+  TargetsCount: 5

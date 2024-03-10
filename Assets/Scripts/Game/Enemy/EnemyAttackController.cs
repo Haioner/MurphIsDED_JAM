@@ -5,6 +5,7 @@ public class EnemyAttackController : MonoBehaviour
 {
     //Attack
     [SerializeField] private Transform attackPivot;
+    [SerializeField] private AudioSource attackSource;
     private int currentAttack = -1;
     private float currentAttackCooldown;
     private LayerMask targetLayer;
@@ -21,12 +22,17 @@ public class EnemyAttackController : MonoBehaviour
         enemyManager = GetComponent<EnemyManager>();
         currentGetAwayTimer = GetAwayTimer();
         NextAttack();
+        SetTargetLayer(0);
     }
 
     private void Update()
     {
         if (enemyManager.enemyState == EnemyState.Die) return;
-        if (GetPlayerManager().playerState == PlayerState.Die) return;
+        PlayerManager playerManager = GetPlayerManager();
+        if (playerManager != null && playerManager.playerState == PlayerState.Die)
+        {
+            return;
+        }
 
         UpdateAttack();
         CalculateCooldown();
@@ -51,6 +57,12 @@ public class EnemyAttackController : MonoBehaviour
         }
     }
 
+    private void SetTargetLayer(int index)
+    {
+        targetLayer = enemyManager.enemySO.AttacksList[index].TargetLayer;
+        enemyManager.Target = GetNearestTarget();
+    }
+
     private float GetAwayTimer()
     {
         return Random.Range(enemyManager.enemySO.MinMaxGetAwayTimer.x, enemyManager.enemySO.MinMaxGetAwayTimer.y);
@@ -64,16 +76,24 @@ public class EnemyAttackController : MonoBehaviour
 
         foreach (Collider2D collider in colliders)
         {
-            float distance = Vector2.Distance(transform.position, collider.transform.position);
-            if (distance < nearestDistance)
+            // Verifique se o collider é diferente do próprio transform
+            if (collider.transform != transform)
             {
-                nearestDistance = distance;
-                nearestTarget = collider.transform;
+                float distance = Vector2.Distance(transform.position, collider.transform.position);
+                if (distance < nearestDistance)
+                {
+                    nearestDistance = distance;
+                    nearestTarget = collider.transform;
+                }
             }
         }
 
+        // Se não houver nenhum outro objeto próximo, retorne o jogador como alvo mais próximo
         if (nearestTarget == null)
+        {
+            NextAttack();
             return enemyManager.player.transform;
+        }
         else
             return nearestTarget;
     }
@@ -85,8 +105,15 @@ public class EnemyAttackController : MonoBehaviour
 
     private PlayerManager GetPlayerManager()
     {
-        if (GetNearestTarget().GetComponent<PlayerManager>() == null) return null;
-        else return GetNearestTarget().GetComponent<PlayerManager>();
+        Transform nearestTarget = GetNearestTarget();
+        if (nearestTarget == null || nearestTarget.GetComponent<PlayerManager>() == null)
+        {
+            return null;
+        }
+        else
+        {
+            return nearestTarget.GetComponent<PlayerManager>();
+        }
     }
 
     private float GetTargetDistance()
@@ -121,7 +148,8 @@ public class EnemyAttackController : MonoBehaviour
 
     private string GetAttackAnimName()
     {
-        return "Attack" + currentAttack;
+        //return "Attack" + currentAttack;
+        return enemyManager.enemySO.AttacksList[currentAttack].AttackAnimName;
     }
 
     private void CalculateCooldown()
@@ -139,6 +167,7 @@ public class EnemyAttackController : MonoBehaviour
 
     public void AttackEvent()
     {
+        AttackAudio();
         if (GetAttackType() == AttackType.Ranged)
         {
             AttackRanged();
@@ -151,6 +180,14 @@ public class EnemyAttackController : MonoBehaviour
         
         SetGetAway();
         NextAttack();
+        SetTargetLayer(currentAttack);
+
+    }
+
+    private void AttackAudio()
+    {
+        attackSource.clip = enemyManager.enemySO.AttacksList[enemyManager.CurrentAttack].attackAudio;
+        attackSource.Play();
     }
 
     private void AttackMeele()
@@ -190,6 +227,7 @@ public class EnemyAttackController : MonoBehaviour
     public void AttackDashEvent(float dashTime)
     {
         StartCoroutine(DashTimer(dashTime));
+        AttackAudio();
     }
 
     private IEnumerator DashTimer(float time)

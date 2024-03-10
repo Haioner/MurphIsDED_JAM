@@ -28,7 +28,7 @@ public class EnemyMovement : MonoBehaviour
         UpdateDash();
 
         if (enemyManager.enemyState == EnemyState.Chase)
-            MoveToPlayer();
+            MoveToTarget();
         else if (enemyManager.enemyState == EnemyState.GetAway)
             MoveBackwards();
     }
@@ -38,16 +38,21 @@ public class EnemyMovement : MonoBehaviour
         return Random.Range(enemyManager.enemySO.MinMaxSpeed.x, enemyManager.enemySO.MinMaxSpeed.y);
     }
 
-    private float GetPlayerDistance()
+    private float GetTargetDistance()
     {
-        return Vector2.Distance(transform.position, playerTransform.position);
+        if (enemyManager.Target != null)
+            return Vector2.Distance(transform.position, enemyManager.Target.position);
+        else
+            return 999;
     }
 
-    private void MoveToPlayer()
+    private void MoveToTarget()
     {
-        if (GetPlayerDistance() > enemyManager.enemySO.AttacksList[enemyManager.CurrentAttack].AttackRange)
+        if (enemyManager.Target == null) return;
+        if (GetTargetDistance() > enemyManager.enemySO.AttacksList[enemyManager.CurrentAttack].AttackRange)
         {
-            Vector2 direction = ((Vector2)playerTransform.position - (Vector2)transform.position).normalized;
+            //Vector2 direction = ((Vector2)playerTransform.position - (Vector2)transform.position).normalized;
+            Vector2 direction = ((Vector2)enemyManager.Target.position - (Vector2)transform.position).normalized;
             transform.Translate(direction * currentSpeed * Time.fixedDeltaTime);
         }
     }

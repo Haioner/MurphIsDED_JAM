@@ -10,9 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7abe2fc0c4bcbb74b81142993c510d4f, type: 3}
-  m_Name: Soldier
+  m_Name: Enemy1
   m_EditorClassIdentifier: 
-  enemyType: 3
   attackType: 1
   MinMaxSpeed: {x: 1.9, y: 2.1}
   Health: 5
@@ -21,21 +20,16 @@ MonoBehaviour:
   BodyGFX: {fileID: 678585422883540824, guid: 32ccfbcad3dcceb42a7434ae8fb19409, type: 3}
   ArmGFX: {fileID: -4812737440380003463, guid: 32ccfbcad3dcceb42a7434ae8fb19409, type: 3}
   LegGFX: {fileID: -6034562253908309285, guid: 32ccfbcad3dcceb42a7434ae8fb19409, type: 3}
-  weaponGFX: {fileID: 21300000, guid: ebcd7911616cc204dba97d7754c1b7b7, type: 3}
+  weaponGFX: {fileID: 21300000, guid: b128df608d67c424a8db922d4bdb280b, type: 3}
   AttacksList:
-  - AttackCooldown: 1
-    Damage: 2
+  - AttackAnimName: SimpleSlash
+    AttackCooldown: 1
+    Damage: 1
     AttackRange: 2
     TargetLayer:
       serializedVersion: 2
       m_Bits: 64
     bullet: {fileID: 0}
-  - AttackCooldown: 1
-    Damage: 5
-    AttackRange: 4
-    TargetLayer:
-      serializedVersion: 2
-      m_Bits: 64
-    bullet: {fileID: 0}
+    attackAudio: {fileID: 8300000, guid: 3a62f14c2ef433b4192e8b932c856b9b, type: 3}
   isBrave: 0
   MinMaxGetAwayTimer: {x: 1, y: 1.5}

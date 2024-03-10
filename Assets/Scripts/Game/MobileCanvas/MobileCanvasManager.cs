@@ -22,6 +22,7 @@ public class MobileCanvasManager : MonoBehaviour
     private void Start()
     {
         gameData = DataManager.instance.gameData;
+        UpdateCurrentAttackIcon();
     }
 
     private void Update()
@@ -54,8 +55,6 @@ public class MobileCanvasManager : MonoBehaviour
         float cooldownSpeedMultiplier = gameData.AttackCooldownSpeed;
         if (currentAttackCooldown > 0)
             currentAttackCooldown -= Time.deltaTime * cooldownSpeedMultiplier;
-        else
-            UpdateCurrentAttackIcon();
     }
 
     private void UpdateHoldAttack()
@@ -70,10 +69,13 @@ public class MobileCanvasManager : MonoBehaviour
     {
         if (currentAttackCooldown <= 0)
             currentAttackCooldown = gameData.EqquipedAttacks[gameData.Attack].AttackCooldown;
+
+        UpdateCurrentAttackIcon();
     }
 
     private void UpdateCurrentAttackIcon()
     {
+        gameData = DataManager.instance.gameData;
         Sprite currentAttackIcon = DataManager.instance.gameData.Attacks[gameData.EqquipedAttacks[DataManager.instance.gameData.Attack].AttackIndex].AttackIcon;
         attackIcon.sprite = currentAttackIcon;
     }

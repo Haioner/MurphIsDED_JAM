@@ -10,6 +10,7 @@ public class AttackSO : ScriptableObject
     public int AttackLevel = 1;
     public int MaxAttackLevel = 15;
     public Sprite AttackIcon;
+    public AudioClip AttackSound;
 
     [Header("Attack Stats")]
     public float AttackDamage;

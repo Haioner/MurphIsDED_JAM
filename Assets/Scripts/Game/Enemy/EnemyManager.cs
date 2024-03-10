@@ -18,6 +18,7 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private List<Transform> ignoreChildren;
     private Dictionary<Transform, Vector3> originalScales = new Dictionary<Transform, Vector3>();
     public int CurrentAttack { get; set; }
+    public Transform Target { get; set; }
 
     [Header("Renderers")]
     [SerializeField] private SpriteRenderer headRender;
@@ -83,14 +84,15 @@ public class EnemyManager : MonoBehaviour
 
     private void Flip()
     {
-        float playerDirection = player.transform.position.x - transform.position.x;
+        if (Target == null) return;
+        float targetDirection = Target.transform.position.x - transform.position.x;
 
-        if (playerDirection < 0)
+        if (targetDirection < 0)
         {
             transform.localScale = new Vector3(-1f, 1f, 1f);
             LockChildrenScaleX(true);
         }
-        else if (playerDirection > 0)
+        else if (targetDirection > 0)
         {
             transform.localScale = new Vector3(1f, 1f, 1f);
             LockChildrenScaleX(false);

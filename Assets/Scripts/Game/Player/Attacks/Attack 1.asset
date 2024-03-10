@@ -14,12 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AttackIndex: 1
   AttackName: SlashForward
-  AttackDescription: A Forward Slash
+  AttackDescription: A quick forward attack
   AttackLevel: 1
   MaxAttackLevel: 15
-  AttackIcon: {fileID: 834852548192020694, guid: 4dffe6eab57ca4e4ba2f967307bd1c29, type: 3}
+  AttackIcon: {fileID: 21300000, guid: 5537517741abac249b1b4be39bfff202, type: 3}
+  AttackSound: {fileID: 8300000, guid: 0e8787005828c374583f44ae7263afe8, type: 3}
   AttackDamage: 0.8
   AttackRange: 4
-  AttackCooldown: 1
+  AttackCooldown: 0.8
   AttackMovementSpeed: 0
   TargetsCount: 1

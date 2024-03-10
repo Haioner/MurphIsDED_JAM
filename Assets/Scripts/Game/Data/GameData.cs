@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerAttacks
 {
     [Header("Attack Info")]
-    public int AttackIndex;
+    public int AttackIndex = -1;
     public string AttackName;
     public string AttackDescription;
     public int AttackLevel = 1;

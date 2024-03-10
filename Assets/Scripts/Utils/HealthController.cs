@@ -21,6 +21,7 @@ public class HealthController : MonoBehaviour
     [Header("Damage")]
     [SerializeField] private FloatNumber floatNumber;
     [SerializeField] private GameObject particleDamage;
+    [SerializeField] private AudioSource damageAudio;
     public UnityEvent DamageEvent;
 
     [Header("CanvasGroup")]
@@ -72,6 +73,7 @@ public class HealthController : MonoBehaviour
     {
         if (currentHealth > 0)
         {
+            damageAudio.Play();
             currentHealth -= damage;
             SpawnDamageFloatNumber(damage);
             SpawnHitParticles();
@@ -109,7 +111,7 @@ public class HealthController : MonoBehaviour
         {
             currentHealth = 0;
             DieEvent?.Invoke();
-            //DieEvent.RemoveAllListeners();
+            DieEvent.RemoveAllListeners();
         }
     }
 

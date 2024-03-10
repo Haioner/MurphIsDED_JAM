@@ -8,6 +8,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private Transform attackPivot;
     [SerializeField] private LayerMask targetLayer;
     [SerializeField] private UnityEvent attackEvent;
+    [SerializeField] private AudioSource attackSource;
     private float currentAttackCooldown;
     private int currentAttackIndex;
 
@@ -56,6 +57,7 @@ public class PlayerAttack : MonoBehaviour
             playerManager.playerState = PlayerState.Attack;
             NextAttack();
             attackEvent?.Invoke();
+            gameData = DataManager.instance.gameData;
         }
     }
 
@@ -70,7 +72,7 @@ public class PlayerAttack : MonoBehaviour
 
         currentAttackIndex++;
         currentAttackIndex %= gameData.EqquipedAttacks.Count;
-        while (gameData.EqquipedAttacks[currentAttackIndex] == null)
+        while (gameData.EqquipedAttacks[currentAttackIndex].AttackIndex == -1)
         {
             currentAttackIndex++;
             currentAttackIndex %= gameData.EqquipedAttacks.Count;
@@ -81,11 +83,22 @@ public class PlayerAttack : MonoBehaviour
         currentAttackCooldown = gameData.EqquipedAttacks[currentAttackIndex].AttackCooldown;
     }
 
+    public void AttackEventMultipleDamage()
+    {
+        DamageNearestEnemies();
+    }
+
     public void AttackEvent()
     {
         DamageNearestEnemies();
         currentRange = gameData.EqquipedAttacks[currentAttackIndex].AttackRange;
         savedCurrentAttackIndex = currentAttackIndex;
+    }
+
+    public void AttackSoundEvent()
+    {
+        attackSource.clip = gameData.Attacks[gameData.EqquipedAttacks[savedCurrentAttackIndex].AttackIndex].AttackSound;
+        attackSource.Play();
     }
 
     public void BackToIdleState()

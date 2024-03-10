@@ -127,9 +127,11 @@ public class GameController : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        float spawnPositionX = Random.Range(minMaxSpawnRadiusX.x, minMaxSpawnRadiusX.y);
-        float spawnPositionY = Random.Range(minMaxSpawnRadiusY.x, minMaxSpawnRadiusY.y);
-        Vector2 spawnPosition = new Vector2(spawnPositionX, spawnPositionY);
+        Vector2 playerPosition = player.transform.position;
+        float spawnOffsetX = Random.Range(-minMaxSpawnRadiusX.y, minMaxSpawnRadiusX.y);
+        float spawnOffsetY = Random.Range(-minMaxSpawnRadiusY.y, minMaxSpawnRadiusY.y);
+        Vector2 spawnOffset = new Vector2(spawnOffsetX, spawnOffsetY);
+        Vector2 spawnPosition = playerPosition + spawnOffset;
         EnemyManager enemy = Instantiate(enemyManager, spawnPosition, Quaternion.identity);
 
         UnityEvent dieEventToAdd = new UnityEvent();
