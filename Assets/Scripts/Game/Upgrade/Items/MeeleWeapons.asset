@@ -18,10 +18,10 @@ MonoBehaviour:
     Icon: {fileID: 21300000, guid: 629e0191fbcc130419275f361de1c677, type: 3}
     itemType: 3
     DamageItem: 0.3
-    AttackCooldownAccelerator: 0.15
+    AttackCooldownAccelerator: 0.2
     HealthItem: 0
     HealthRegenItem: 0
-    SpeedItem: 0
+    SpeedItem: 1
     DashCooldownItem: 0
   - ItemName: Wooden Knife
     ItemPrice: 2
@@ -31,7 +31,7 @@ MonoBehaviour:
     AttackCooldownAccelerator: 0.1
     HealthItem: -0.6
     HealthRegenItem: 0
-    SpeedItem: 0.2
+    SpeedItem: 0.5
     DashCooldownItem: 0
   - ItemName: Spike Dagger
     ItemPrice: 2
@@ -52,4 +52,14 @@ MonoBehaviour:
     HealthItem: 0
     HealthRegenItem: 0
     SpeedItem: -0.3
+    DashCooldownItem: 0
+  - ItemName: Simple Spear
+    ItemPrice: 4
+    Icon: {fileID: 21300000, guid: 81255aefadb5bc84cbaaecd821d46161, type: 3}
+    itemType: 3
+    DamageItem: 1.5
+    AttackCooldownAccelerator: 0.2
+    HealthItem: 0
+    HealthRegenItem: 0
+    SpeedItem: -0.4
     DashCooldownItem: 0

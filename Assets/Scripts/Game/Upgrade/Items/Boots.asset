@@ -19,9 +19,9 @@ MonoBehaviour:
     itemType: 2
     DamageItem: 0
     AttackCooldownAccelerator: 0
-    HealthItem: 0.3
+    HealthItem: 1
     HealthRegenItem: 0
-    SpeedItem: 0.1
+    SpeedItem: 0.3
     DashCooldownItem: 0
   - ItemName: Boot Simple Iron
     ItemPrice: 2
@@ -29,7 +29,7 @@ MonoBehaviour:
     itemType: 2
     DamageItem: 0
     AttackCooldownAccelerator: 0
-    HealthItem: 0.5
+    HealthItem: 2
     HealthRegenItem: 0
-    SpeedItem: -0.2
-    DashCooldownItem: 0.1
+    SpeedItem: 0.5
+    DashCooldownItem: 0.2

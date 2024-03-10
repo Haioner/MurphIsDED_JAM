@@ -1,9 +1,6 @@
 using UnityEngine.Rendering.Universal;
-using UnityEngine.Rendering;
-using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditorInternal;
 
 public class Options : MonoBehaviour
 {

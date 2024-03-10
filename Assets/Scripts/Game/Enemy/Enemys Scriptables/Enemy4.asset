@@ -24,8 +24,8 @@ MonoBehaviour:
   AttacksList:
   - AttackAnimName: ShootMagic
     AttackCooldown: 4
-    Damage: 2
-    AttackRange: 8.5
+    Damage: 4
+    AttackRange: 9
     TargetLayer:
       serializedVersion: 2
       m_Bits: 64

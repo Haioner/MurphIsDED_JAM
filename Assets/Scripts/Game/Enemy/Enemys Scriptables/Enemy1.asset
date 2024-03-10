@@ -20,7 +20,7 @@ MonoBehaviour:
   BodyGFX: {fileID: 678585422883540824, guid: 32ccfbcad3dcceb42a7434ae8fb19409, type: 3}
   ArmGFX: {fileID: -4812737440380003463, guid: 32ccfbcad3dcceb42a7434ae8fb19409, type: 3}
   LegGFX: {fileID: -6034562253908309285, guid: 32ccfbcad3dcceb42a7434ae8fb19409, type: 3}
-  weaponGFX: {fileID: 21300000, guid: b128df608d67c424a8db922d4bdb280b, type: 3}
+  weaponGFX: {fileID: 21300000, guid: 57a4d6138bf6e4a458b119470fec8e6e, type: 3}
   AttacksList:
   - AttackAnimName: SimpleSlash
     AttackCooldown: 1

@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7abe2fc0c4bcbb74b81142993c510d4f, type: 3}
+  m_Name: Enemy5
+  m_EditorClassIdentifier: 
+  attackType: 1
+  MinMaxSpeed: {x: 1.5, y: 1.8}
+  Health: 10
+  AnimatorController: {fileID: 9100000, guid: 592e4e78c3224ec4699f2dfbd1f15e4b, type: 2}
+  HeadGFX: {fileID: 1727277749102273415, guid: 6ed8c4609ee3c37458580c09b10f5f98, type: 3}
+  BodyGFX: {fileID: -7793633264783550258, guid: 6ed8c4609ee3c37458580c09b10f5f98, type: 3}
+  ArmGFX: {fileID: -5293106743465702941, guid: 6ed8c4609ee3c37458580c09b10f5f98, type: 3}
+  LegGFX: {fileID: -197293341911027061, guid: 6ed8c4609ee3c37458580c09b10f5f98, type: 3}
+  weaponGFX: {fileID: 21300000, guid: ebcd7911616cc204dba97d7754c1b7b7, type: 3}
+  AttacksList:
+  - AttackAnimName: SimpleSlash
+    AttackCooldown: 1.5
+    Damage: 3
+    AttackRange: 2
+    TargetLayer:
+      serializedVersion: 2
+      m_Bits: 64
+    bullet: {fileID: 0}
+    attackAudio: {fileID: 8300000, guid: 3a62f14c2ef433b4192e8b932c856b9b, type: 3}
+  - AttackAnimName: DashForward
+    AttackCooldown: 5
+    Damage: 4
+    AttackRange: 4
+    TargetLayer:
+      serializedVersion: 2
+      m_Bits: 64
+    bullet: {fileID: 0}
+    attackAudio: {fileID: 8300000, guid: 3a62f14c2ef433b4192e8b932c856b9b, type: 3}
+  isBrave: 1
+  MinMaxGetAwayTimer: {x: 1, y: 1.5}

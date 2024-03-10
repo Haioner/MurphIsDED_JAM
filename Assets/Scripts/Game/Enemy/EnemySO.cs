@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEditor.Animations;
 using UnityEngine;
 
 public enum EnemyType
@@ -38,7 +37,6 @@ public class EnemySO : ScriptableObject
     public float Health;
 
     [Header("GFX")]
-    public AnimatorController AnimatorController;
     public Sprite HeadGFX;
     public Sprite BodyGFX;
     public Sprite ArmGFX;

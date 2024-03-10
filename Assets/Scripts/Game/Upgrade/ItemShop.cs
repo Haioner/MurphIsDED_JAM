@@ -10,7 +10,7 @@ public class ItemShop : MonoBehaviour
     [SerializeField] private TextMeshProUGUI priceText;
     [SerializeField] private TextMeshProUGUI statsText;
     [SerializeField] private Image iconImage;
-    [SerializeField] private GameObject blackSceen;
+    [SerializeField] private GameObject blackScreen;
 
     private ItemSO item;
     private UpgradeManager upgradeManager;
@@ -26,7 +26,7 @@ public class ItemShop : MonoBehaviour
 
     public void SetActiveBlackScreen(bool state)
     {
-        blackSceen.SetActive(state);
+        blackScreen.SetActive(state);
     }
 
     private void SetItemInfo()

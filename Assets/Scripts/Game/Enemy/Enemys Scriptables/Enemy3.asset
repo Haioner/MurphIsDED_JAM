@@ -20,7 +20,7 @@ MonoBehaviour:
   BodyGFX: {fileID: -37441279870223006, guid: 2893c816ac2347149b9e99fbe329dca5, type: 3}
   ArmGFX: {fileID: 4268102574975352437, guid: 2893c816ac2347149b9e99fbe329dca5, type: 3}
   LegGFX: {fileID: -4434089150409334208, guid: 2893c816ac2347149b9e99fbe329dca5, type: 3}
-  weaponGFX: {fileID: 21300000, guid: ebcd7911616cc204dba97d7754c1b7b7, type: 3}
+  weaponGFX: {fileID: 21300000, guid: b128df608d67c424a8db922d4bdb280b, type: 3}
   AttacksList:
   - AttackAnimName: SimpleSlash
     AttackCooldown: 1
@@ -32,8 +32,8 @@ MonoBehaviour:
     bullet: {fileID: 0}
     attackAudio: {fileID: 8300000, guid: 3a62f14c2ef433b4192e8b932c856b9b, type: 3}
   - AttackAnimName: DashForward
-    AttackCooldown: 1
-    Damage: 4
+    AttackCooldown: 2.5
+    Damage: 3
     AttackRange: 4
     TargetLayer:
       serializedVersion: 2

@@ -1,14 +1,16 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class LevelSelectorItem : MonoBehaviour
 {
-    public int id {  get; set; }
+    [SerializeField] private TextMeshProUGUI waveTEXT;
     private bool isUnlocked;
 
-    private void Awake()
+    public void UpdateSelectorItem(int wave)
     {
         GetComponent<Button>().interactable = isUnlocked;
+        waveTEXT.text = "Wave " + wave.ToString();
     }
 
     public void UnlockLevel()

@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,6 +25,8 @@ public class UpgradeManager : MonoBehaviour
 
     [Header("Items")]
     [SerializeField] private ItemShop itemShop;
+    [SerializeField] private GameObject InsufficientDOTSText;
+    [SerializeField] private DOTweenAnimation dotTweenInsufficient;
     private ItemShop currentItemShop;
     private ItemSO selectedItemSO;
     private int currentSelectedItemIndex;
@@ -140,6 +143,7 @@ public class UpgradeManager : MonoBehaviour
     {
         if (DataManager.instance.itemData.dotPoints >= item.ItemList[itemIndex].ItemPrice)
         {
+            currentItemShop.SetActiveBlackScreen(true);
             inventoryManager.UpdatePlayerStatsText();
             UpdateSelectedItemColor(-1);
             itemsHolder.SetActive(true);
@@ -149,6 +153,11 @@ public class UpgradeManager : MonoBehaviour
 
             selectedItemSO = item;
             currentSelectedItemIndex = itemIndex;
+        }
+        else
+        {
+            InsufficientDOTSText.SetActive(true);
+            dotTweenInsufficient.DORewindAndPlayNext();
         }
     }
 

@@ -48,3 +48,6 @@ TagManager:
   - name: Damage
     uniqueID: 3977849035
     locked: 0
+  - name: Light
+    uniqueID: 3750802015
+    locked: 0

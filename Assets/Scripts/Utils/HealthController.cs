@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -44,11 +43,6 @@ public class HealthController : MonoBehaviour
     {
         UpdateHealthSlider();
         CanvasVisibility();
-
-        if (Input.GetKeyDown(KeyCode.F))
-            Damage(-1);
-        if (Input.GetKeyDown(KeyCode.G))
-            Damage(10);
     }
 
     public void SetMaxHealth(float newValue)

@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData:
-    dotPoints: 5555
+    dotPoints: 0
     MeeleWeapons: {fileID: 11400000, guid: a6f6b5fe9a955ab41a230cfbc1962a26, type: 2}
     CurrentWeaponIndex: 0
     Helmet: {fileID: 11400000, guid: 23bb892e15950c540a2777e1d05657d6, type: 2}

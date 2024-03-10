@@ -43,7 +43,7 @@ public class EnemyManager : MonoBehaviour
         healthController.enabled=false;
         healthController.SetMaxHealth(enemySO.Health);
         anim = GetComponent<Animator>();
-        anim.runtimeAnimatorController = enemySO.AnimatorController as RuntimeAnimatorController;
+        //anim.runtimeAnimatorController = enemySO.AnimatorController as RuntimeAnimatorController;
     }
 
     private void Update()

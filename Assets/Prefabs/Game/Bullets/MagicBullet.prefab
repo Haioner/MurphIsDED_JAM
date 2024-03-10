@@ -4798,7 +4798,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 98
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -4903,7 +4903,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 98
   m_Sprite: {fileID: 21300000, guid: 0e99a9087462fd444b262f900e7eafea, type: 3}
   m_Color: {r: 1, g: 0, b: 0.9258976, a: 1}
   m_FlipX: 0
